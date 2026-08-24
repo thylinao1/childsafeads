@@ -17,6 +17,11 @@ gold labels, no model probability files and no fold assignment**, and instance i
 been removed from the documentation. Request access from the task organisers via the competition
 page above, then place `train.jsonl`, `dev.jsonl` and `test.jsonl` under `data/`.
 
+For the same reason, files that `METHOD.md` describes but that derive from the dataset
+(`preds/`, `preds_test.jsonl`, `eval/folds.json`, `eval/majority_dev.jsonl`,
+`decide/refit_eval.log`) are not included; the pipeline regenerates all of them once the data
+is in place.
+
 ## What is here
 
 | Path | Contents |
