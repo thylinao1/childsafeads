@@ -1,0 +1,34 @@
+{
+ "rare_class": "other",
+ "gold_rare_rows": 2,
+ "channels_with_rare": 2,
+ "channels": 632,
+ "times_predicted_by_system": 0,
+ "p_rare_in_resample": 0.871,
+ "regimes": {
+  "all": {
+   "reps": 4000,
+   "st1_mean": 0.6568185826131874,
+   "st1_sd": 0.056345747738456194,
+   "metric_mean": 0.704450244151019,
+   "metric_sd": 0.019999271661457037
+  },
+  "rare_present": {
+   "reps": 3484,
+   "st1_mean": 0.6361332193603052,
+   "st1_sd": 0.0163255820197462,
+   "metric_mean": 0.6976107382989433,
+   "metric_sd": 0.009005532019705385
+  },
+  "rare_absent": {
+   "reps": 516,
+   "st1_mean": 0.7964848724834219,
+   "st1_sd": 0.020274871751164287,
+   "metric_mean": 0.7506301635088318,
+   "metric_sd": 0.01020396375191704
+  }
+ },
+ "st1_gap_measured": 0.16035165312311672,
+ "st1_gap_predicted_5_over_4": 0.15903330484007627,
+ "metric_gap": 0.05301942520988856
+}

@@ -1,0 +1,1060 @@
+{
+ "scores": {
+  "1": {
+   "oof": {
+    "st1": 0.4916085736776433,
+    "st2": 0.5959591480179721,
+    "st3": 0.4347559649363258,
+    "mean": 0.5074412288773137
+   },
+   "dev": {
+    "st1": 0.6639981834720334,
+    "st2": 0.5791658852901609,
+    "st3": 0.4078532117008129,
+    "mean": 0.5503390934876691
+   },
+   "oof_per_class": {
+    "st1": {
+     "physical_goods": 0.8493543758967002,
+     "digital_content_or_services": 0.8624267027514659,
+     "physical_services": 0.582010582010582,
+     "none": 0.1642512077294686,
+     "other": 0.0
+    },
+    "st2": {
+     "toys": 0.4148148148148148,
+     "food": 0.7427597955706985,
+     "apps": 0.6476780185758514,
+     "hardware_electronics": 0.7182425978987583,
+     "fashion": 0.46588235294117647,
+     "health": 0.7514018691588785,
+     "education": 0.7737226277372263,
+     "financial": 0.6239316239316239,
+     "gambling": 0.8181818181818182,
+     "gambling_adjacent": 0.4971751412429379,
+     "creator_community": 0.26887661141804786,
+     "other": 0.428842504743833
+    },
+    "st3": {
+     "undisclosed_advertising": 0.42105263157894735,
+     "inadequate_disclosure": 0.2419855222337125,
+     "direct_exhortation": 0.3902439024390244,
+     "misleading_claim": 0.5678517776664997,
+     "age_restricted_or_prohibited_product": 0.5961538461538461,
+     "hfss_food_marketing": 0.5277777777777778,
+     "no_flag": 0.4420731707317073,
+     "insufficient_context": 0.2909090909090909
+    }
+   },
+   "dev_per_class": {
+    "st1": {
+     "physical_goods": 0.8564476885644768,
+     "digital_content_or_services": 0.8796844181459567,
+     "physical_services": 0.6341463414634146,
+     "none": 0.2857142857142857
+    },
+    "st2": {
+     "toys": 0.36363636363636365,
+     "food": 0.7333333333333333,
+     "apps": 0.69,
+     "hardware_electronics": 0.7222222222222222,
+     "fashion": 0.4235294117647059,
+     "health": 0.7966101694915254,
+     "education": 0.8181818181818182,
+     "financial": 0.42105263157894735,
+     "gambling": 0.8333333333333334,
+     "gambling_adjacent": 0.36363636363636365,
+     "creator_community": 0.32,
+     "other": 0.46445497630331756
+    },
+    "st3": {
+     "undisclosed_advertising": 0.4642857142857143,
+     "inadequate_disclosure": 0.273224043715847,
+     "direct_exhortation": 0.4529616724738676,
+     "misleading_claim": 0.5823389021479713,
+     "age_restricted_or_prohibited_product": 0.4,
+     "hfss_food_marketing": 0.3333333333333333,
+     "no_flag": 0.47096774193548385,
+     "insufficient_context": 0.2857142857142857
+    }
+   }
+  },
+  "2": {
+   "oof": {
+    "st1": 0.5250870355106889,
+    "st2": 0.6056488761808329,
+    "st3": 0.4654368095266395,
+    "mean": 0.5320575737393871
+   },
+   "dev": {
+    "st1": 0.705516661761143,
+    "st2": 0.582536692183587,
+    "st3": 0.44050889899752055,
+    "mean": 0.5761874176474169
+   },
+   "oof_per_class": {
+    "st1": {
+     "physical_goods": 0.8740046838407494,
+     "digital_content_or_services": 0.8817863397548161,
+     "physical_services": 0.5980392156862745,
+     "none": 0.2716049382716049,
+     "other": 0.0
+    },
+    "st2": {
+     "toys": 0.4266666666666667,
+     "food": 0.7477638640429338,
+     "apps": 0.6578947368421053,
+     "hardware_electronics": 0.7396768402154399,
+     "fashion": 0.44672131147540983,
+     "health": 0.7598566308243727,
+     "education": 0.7785234899328859,
+     "financial": 0.5941422594142259,
+     "gambling": 0.782608695652174,
+     "gambling_adjacent": 0.542713567839196,
+     "creator_community": 0.30751708428246016,
+     "other": 0.48370136698212407
+    },
+    "st3": {
+     "undisclosed_advertising": 0.5805084745762712,
+     "inadequate_disclosure": 0.3993371996685998,
+     "direct_exhortation": 0.39591836734693875,
+     "misleading_claim": 0.5172043010752688,
+     "age_restricted_or_prohibited_product": 0.6126126126126126,
+     "hfss_food_marketing": 0.5,
+     "no_flag": 0.4598490048043926,
+     "insufficient_context": 0.25806451612903225
+    }
+   },
+   "dev_per_class": {
+    "st1": {
+     "physical_goods": 0.8767772511848341,
+     "digital_content_or_services": 0.8897338403041825,
+     "physical_services": 0.5555555555555556,
+     "none": 0.5
+    },
+    "st2": {
+     "toys": 0.47619047619047616,
+     "food": 0.7252747252747253,
+     "apps": 0.6824644549763034,
+     "hardware_electronics": 0.726530612244898,
+     "fashion": 0.4117647058823529,
+     "health": 0.8032786885245902,
+     "education": 0.7142857142857143,
+     "financial": 0.47058823529411764,
+     "gambling": 0.8333333333333334,
+     "gambling_adjacent": 0.29411764705882354,
+     "creator_community": 0.36046511627906974,
+     "other": 0.49214659685863876
+    },
+    "st3": {
+     "undisclosed_advertising": 0.5586592178770949,
+     "inadequate_disclosure": 0.4065040650406504,
+     "direct_exhortation": 0.47572815533980584,
+     "misleading_claim": 0.5115089514066496,
+     "age_restricted_or_prohibited_product": 0.5806451612903226,
+     "hfss_food_marketing": 0.3076923076923077,
+     "no_flag": 0.48333333333333334,
+     "insufficient_context": 0.2
+    }
+   }
+  },
+  "3": {
+   "oof": {
+    "st1": 0.5241902300231353,
+    "st2": 0.60573865076626,
+    "st3": 0.4562042718672436,
+    "mean": 0.5287110508855463
+   },
+   "dev": {
+    "st1": 0.7042858878877836,
+    "st2": 0.5703347614190516,
+    "st3": 0.4519441624782679,
+    "mean": 0.5755216039283676
+   },
+   "oof_per_class": {
+    "st1": {
+     "physical_goods": 0.8741845293569431,
+     "digital_content_or_services": 0.8799298860648553,
+     "physical_services": 0.5918367346938775,
+     "none": 0.275,
+     "other": 0.0
+    },
+    "st2": {
+     "toys": 0.43478260869565216,
+     "food": 0.7531083481349912,
+     "apps": 0.660229330114665,
+     "hardware_electronics": 0.7335640138408305,
+     "fashion": 0.45134575569358176,
+     "health": 0.7567567567567568,
+     "education": 0.7829181494661922,
+     "financial": 0.5654008438818565,
+     "gambling": 0.782608695652174,
+     "gambling_adjacent": 0.5538461538461539,
+     "creator_community": 0.3078730904817861,
+     "other": 0.48643006263048016
+    },
+    "st3": {
+     "undisclosed_advertising": 0.5867507886435331,
+     "inadequate_disclosure": 0.37554585152838427,
+     "direct_exhortation": 0.3824451410658307,
+     "misleading_claim": 0.4983642311886587,
+     "age_restricted_or_prohibited_product": 0.5789473684210527,
+     "hfss_food_marketing": 0.5066666666666667,
+     "no_flag": 0.4709141274238227,
+     "insufficient_context": 0.25
+    }
+   },
+   "dev_per_class": {
+    "st1": {
+     "physical_goods": 0.8767772511848341,
+     "digital_content_or_services": 0.8876190476190476,
+     "physical_services": 0.5142857142857142,
+     "none": 0.5384615384615384
+    },
+    "st2": {
+     "toys": 0.47058823529411764,
+     "food": 0.7252747252747253,
+     "apps": 0.6906474820143885,
+     "hardware_electronics": 0.7351778656126482,
+     "fashion": 0.4158415841584158,
+     "health": 0.8032786885245902,
+     "education": 0.6363636363636364,
+     "financial": 0.36363636363636365,
+     "gambling": 0.8333333333333334,
+     "gambling_adjacent": 0.29411764705882354,
+     "creator_community": 0.37575757575757573,
+     "other": 0.5
+    },
+    "st3": {
+     "undisclosed_advertising": 0.6179775280898876,
+     "inadequate_disclosure": 0.3682008368200837,
+     "direct_exhortation": 0.47474747474747475,
+     "misleading_claim": 0.5103092783505154,
+     "age_restricted_or_prohibited_product": 0.5625,
+     "hfss_food_marketing": 0.4,
+     "no_flag": 0.5,
+     "insufficient_context": 0.18181818181818182
+    }
+   }
+  },
+  "4": {
+   "oof": {
+    "st1": 0.6099468977221749,
+    "st2": 0.6993289219229579,
+    "st3": 0.45815138984349874,
+    "mean": 0.5891424031628772
+   },
+   "dev": {
+    "st1": 0.6994096790941293,
+    "st2": 0.6223846870389887,
+    "st3": 0.44922067032114393,
+    "mean": 0.5903383454847541
+   },
+   "oof_per_class": {
+    "st1": {
+     "physical_goods": 0.9307479224376731,
+     "digital_content_or_services": 0.9229398663697105,
+     "physical_services": 0.6350710900473934,
+     "none": 0.5609756097560976,
+     "other": 0.0
+    },
+    "st2": {
+     "toys": 0.5548387096774193,
+     "food": 0.8465266558966075,
+     "apps": 0.6899879372738239,
+     "hardware_electronics": 0.7785108388312912,
+     "fashion": 0.7703180212014135,
+     "health": 0.7805695142378559,
+     "education": 0.8226950354609929,
+     "financial": 0.6415094339622641,
+     "gambling": 0.9166666666666666,
+     "gambling_adjacent": 0.5841584158415841,
+     "creator_community": 0.5022288261515602,
+     "other": 0.5039370078740157
+    },
+    "st3": {
+     "undisclosed_advertising": 0.5929978118161926,
+     "inadequate_disclosure": 0.3699530516431925,
+     "direct_exhortation": 0.43853820598006643,
+     "misleading_claim": 0.59834871296746,
+     "age_restricted_or_prohibited_product": 0.6363636363636364,
+     "hfss_food_marketing": 0.4307692307692308,
+     "no_flag": 0.5073313782991202,
+     "insufficient_context": 0.09090909090909091
+    }
+   },
+   "dev_per_class": {
+    "st1": {
+     "physical_goods": 0.9245283018867925,
+     "digital_content_or_services": 0.9003831417624522,
+     "physical_services": 0.7,
+     "none": 0.2727272727272727
+    },
+    "st2": {
+     "toys": 0.5454545454545454,
+     "food": 0.8543689320388349,
+     "apps": 0.7201946472019465,
+     "hardware_electronics": 0.7903225806451613,
+     "fashion": 0.6111111111111112,
+     "health": 0.7611940298507462,
+     "education": 0.6666666666666666,
+     "financial": 0.4666666666666667,
+     "gambling": 0.6666666666666666,
+     "gambling_adjacent": 0.3902439024390244,
+     "creator_community": 0.49572649572649574,
+     "other": 0.5
+    },
+    "st3": {
+     "undisclosed_advertising": 0.5901639344262295,
+     "inadequate_disclosure": 0.3192488262910798,
+     "direct_exhortation": 0.4857142857142857,
+     "misleading_claim": 0.5986078886310905,
+     "age_restricted_or_prohibited_product": 0.6666666666666666,
+     "hfss_food_marketing": 0.42857142857142855,
+     "no_flag": 0.5047923322683706,
+     "insufficient_context": 0.0
+    }
+   }
+  }
+ },
+ "bootstrap": {
+  "L2-L1": {
+   "st1": {
+    "delta": 0.0340302698785364,
+    "se": 0.013337191026052363,
+    "ci95": [
+     0.008235456564841192,
+     0.06101662626115584
+    ],
+    "p_better": 0.99625
+   },
+   "st2": {
+    "delta": 0.01039340341444566,
+    "se": 0.008258898958614501,
+    "ci95": [
+     -0.005202989737161639,
+     0.02709177666139029
+    ],
+    "p_better": 0.901
+   },
+   "st3": {
+    "delta": 0.030511342143751605,
+    "se": 0.017377233946992744,
+    "ci95": [
+     -0.003462243902446725,
+     0.06466389403643091
+    ],
+    "p_better": 0.95775
+   },
+   "mean": {
+    "delta": 0.024978338478911222,
+    "se": 0.0073208804618728395,
+    "ci95": [
+     0.01011970285337294,
+     0.039647307673682186
+    ],
+    "p_better": 1.0
+   },
+   "n_channels": 632
+  },
+  "L3-L2": {
+   "st1": {
+    "delta": -0.001022117618299361,
+    "se": 0.003296855714731201,
+    "ci95": [
+     -0.007837112657952788,
+     0.005289961028934172
+    ],
+    "p_better": 0.37975
+   },
+   "st2": {
+    "delta": 0.00019286337225564757,
+    "se": 0.0030321709345341877,
+    "ci95": [
+     -0.0058702855986838215,
+     0.006099586135349327
+    ],
+    "p_better": 0.53075
+   },
+   "st3": {
+    "delta": -0.009384400748159102,
+    "se": 0.012388309423818324,
+    "ci95": [
+     -0.03551642505527816,
+     0.012602910695028426
+    ],
+    "p_better": 0.2245
+   },
+   "mean": {
+    "delta": -0.00340455166473427,
+    "se": 0.004317638912096459,
+    "ci95": [
+     -0.012480684268650193,
+     0.00454741808384579
+    ],
+    "p_better": 0.21625
+   },
+   "n_channels": 632
+  },
+  "L4-L3": {
+   "st1": {
+    "delta": 0.08882963134337553,
+    "se": 0.020688375967848855,
+    "ci95": [
+     0.049479775728668046,
+     0.13203378233201926
+    ],
+    "p_better": 1.0
+   },
+   "st2": {
+    "delta": 0.09595839298933348,
+    "se": 0.015122407636742604,
+    "ci95": [
+     0.07045549187794337,
+     0.13007732967506963
+    ],
+    "p_better": 1.0
+   },
+   "st3": {
+    "delta": 0.0026100564387487764,
+    "se": 0.015728378348942106,
+    "ci95": [
+     -0.029680340058859094,
+     0.032397616206835005
+    ],
+    "p_better": 0.575
+   },
+   "mean": {
+    "delta": 0.06246602692381926,
+    "se": 0.00969711478701022,
+    "ci95": [
+     0.04388051817274506,
+     0.08205407079018405
+    ],
+    "p_better": 1.0
+   },
+   "n_channels": 632
+  },
+  "L4-L1": {
+   "st1": {
+    "delta": 0.12183778360361257,
+    "se": 0.019235288268574048,
+    "ci95": [
+     0.08754418881376302,
+     0.16666178419376027
+    ],
+    "p_better": 1.0
+   },
+   "st2": {
+    "delta": 0.10654465977603479,
+    "se": 0.01592895212315192,
+    "ci95": [
+     0.07836991825274076,
+     0.14285190242246038
+    ],
+    "p_better": 1.0
+   },
+   "st3": {
+    "delta": 0.02373699783434128,
+    "se": 0.017236922481264655,
+    "ci95": [
+     -0.009362622236969844,
+     0.05785972717033794
+    ],
+    "p_better": 0.91975
+   },
+   "mean": {
+    "delta": 0.08403981373799621,
+    "se": 0.010419475271445277,
+    "ci95": [
+     0.06407755752552081,
+     0.1050624723256459
+    ],
+    "p_better": 1.0
+   },
+   "n_channels": 632
+  },
+  "L4-L2": {
+   "st1": {
+    "delta": 0.08780751372507617,
+    "se": 0.02053173298355398,
+    "ci95": [
+     0.0482546519271897,
+     0.13024848075716222
+    ],
+    "p_better": 1.0
+   },
+   "st2": {
+    "delta": 0.09615125636158911,
+    "se": 0.014845921038243722,
+    "ci95": [
+     0.07141649853886559,
+     0.12971874272438952
+    ],
+    "p_better": 1.0
+   },
+   "st3": {
+    "delta": -0.006774344309410326,
+    "se": 0.016456369548496955,
+    "ci95": [
+     -0.039587298505350095,
+     0.0252410188052041
+    ],
+    "p_better": 0.338
+   },
+   "mean": {
+    "delta": 0.05906147525908498,
+    "se": 0.00991470161169824,
+    "ci95": [
+     0.03970859680512846,
+     0.07895236516981705
+    ],
+    "p_better": 1.0
+   },
+   "n_channels": 632
+  }
+ },
+ "fitted_params": {
+  "1": {
+   "member": "m3q32AL1",
+   "st1_tau": 0.0,
+   "st1_prior": [
+    0.47811304717382064,
+    0.45431364215894604,
+    0.05184870378240544,
+    0.014874628134296642,
+    0.0008499787505312367
+   ],
+   "st2": {
+    "toys": {
+     "t": 0.07,
+     "f1_oof": 0.4148,
+     "support": 77,
+     "src": "grid"
+    },
+    "food": {
+     "t": 0.08,
+     "f1_oof": 0.7428,
+     "support": 293,
+     "src": "grid"
+    },
+    "apps": {
+     "t": 0.03,
+     "f1_oof": 0.6477,
+     "support": 654,
+     "src": "grid"
+    },
+    "hardware_electronics": {
+     "t": 0.87,
+     "f1_oof": 0.7266,
+     "support": 516,
+     "src": "grid"
+    },
+    "fashion": {
+     "t": 0.19,
+     "f1_oof": 0.4659,
+     "support": 267,
+     "src": "grid"
+    },
+    "health": {
+     "t": 0.33,
+     "f1_oof": 0.7514,
+     "support": 264,
+     "src": "grid"
+    },
+    "education": {
+     "t": 0.35,
+     "f1_oof": 0.7737,
+     "support": 140,
+     "src": "grid"
+    },
+    "financial": {
+     "t": 0.93,
+     "f1_oof": 0.6201,
+     "support": 135,
+     "src": "grid"
+    },
+    "gambling": {
+     "t": 0.4090909090909091,
+     "f1_oof": 0.8182,
+     "support": 12,
+     "src": "lipton"
+    },
+    "gambling_adjacent": {
+     "t": 0.25,
+     "f1_oof": 0.4972,
+     "support": 92,
+     "src": "grid"
+    },
+    "creator_community": {
+     "t": 0.01,
+     "f1_oof": 0.2689,
+     "support": 269,
+     "src": "grid"
+    },
+    "other": {
+     "t": 0.02,
+     "f1_oof": 0.4278,
+     "support": 412,
+     "src": "grid"
+    }
+   },
+   "st3": {
+    "undisclosed_advertising": {
+     "t": 0.01,
+     "f1_oof": 0.4211,
+     "support": 352,
+     "src": "grid"
+    },
+    "inadequate_disclosure": {
+     "t": 0.01,
+     "f1_oof": 0.242,
+     "support": 611,
+     "src": "grid"
+    },
+    "direct_exhortation": {
+     "t": 0.95,
+     "f1_oof": 0.4691,
+     "support": 304,
+     "src": "grid"
+    },
+    "misleading_claim": {
+     "t": 0.01,
+     "f1_oof": 0.5679,
+     "support": 1277,
+     "src": "grid"
+    },
+    "age_restricted_or_prohibited_product": {
+     "t": 0.09,
+     "f1_oof": 0.5962,
+     "support": 59,
+     "src": "grid"
+    },
+    "hfss_food_marketing": {
+     "t": 0.76,
+     "f1_oof": 0.5352,
+     "support": 40,
+     "src": "grid"
+    },
+    "no_flag": {
+     "t": 0.84,
+     "f1_oof": 0.4444,
+     "support": 529,
+     "src": "grid"
+    },
+    "insufficient_context": {
+     "t": 0.71,
+     "f1_oof": 0.2909,
+     "support": 15,
+     "src": "grid"
+    }
+   }
+  },
+  "2": {
+   "member": "m3q32AL2",
+   "st1_tau": 0.4,
+   "st1_prior": [
+    0.47811304717382064,
+    0.45431364215894604,
+    0.05184870378240544,
+    0.014874628134296642,
+    0.0008499787505312367
+   ],
+   "st2": {
+    "toys": {
+     "t": 0.03,
+     "f1_oof": 0.4267,
+     "support": 77,
+     "src": "grid"
+    },
+    "food": {
+     "t": 0.3769633507853403,
+     "f1_oof": 0.7539,
+     "support": 293,
+     "src": "shrunk"
+    },
+    "apps": {
+     "t": 0.05,
+     "f1_oof": 0.6579,
+     "support": 654,
+     "src": "grid"
+    },
+    "hardware_electronics": {
+     "t": 0.94,
+     "f1_oof": 0.7407,
+     "support": 516,
+     "src": "grid"
+    },
+    "fashion": {
+     "t": 0.23,
+     "f1_oof": 0.4467,
+     "support": 267,
+     "src": "shrunk"
+    },
+    "health": {
+     "t": 0.19,
+     "f1_oof": 0.7599,
+     "support": 264,
+     "src": "grid"
+    },
+    "education": {
+     "t": 0.17,
+     "f1_oof": 0.7785,
+     "support": 140,
+     "src": "grid"
+    },
+    "financial": {
+     "t": 0.94,
+     "f1_oof": 0.5941,
+     "support": 135,
+     "src": "grid"
+    },
+    "gambling": {
+     "t": 0.4090909090909091,
+     "f1_oof": 0.8182,
+     "support": 12,
+     "src": "lipton"
+    },
+    "gambling_adjacent": {
+     "t": 0.19,
+     "f1_oof": 0.5427,
+     "support": 92,
+     "src": "grid"
+    },
+    "creator_community": {
+     "t": 0.09,
+     "f1_oof": 0.3075,
+     "support": 269,
+     "src": "grid"
+    },
+    "other": {
+     "t": 0.03,
+     "f1_oof": 0.4837,
+     "support": 412,
+     "src": "grid"
+    }
+   },
+   "st3": {
+    "undisclosed_advertising": {
+     "t": 0.38,
+     "f1_oof": 0.5805,
+     "support": 352,
+     "src": "grid"
+    },
+    "inadequate_disclosure": {
+     "t": 0.01,
+     "f1_oof": 0.3993,
+     "support": 611,
+     "src": "grid"
+    },
+    "direct_exhortation": {
+     "t": 0.94,
+     "f1_oof": 0.48,
+     "support": 304,
+     "src": "grid"
+    },
+    "misleading_claim": {
+     "t": 0.01,
+     "f1_oof": 0.5172,
+     "support": 1277,
+     "src": "grid"
+    },
+    "age_restricted_or_prohibited_product": {
+     "t": 0.03,
+     "f1_oof": 0.6126,
+     "support": 59,
+     "src": "grid"
+    },
+    "hfss_food_marketing": {
+     "t": 0.3,
+     "f1_oof": 0.5,
+     "support": 40,
+     "src": "shrunk"
+    },
+    "no_flag": {
+     "t": 0.95,
+     "f1_oof": 0.4643,
+     "support": 529,
+     "src": "grid"
+    },
+    "insufficient_context": {
+     "t": 0.02,
+     "f1_oof": 0.2581,
+     "support": 15,
+     "src": "grid"
+    }
+   }
+  },
+  "3": {
+   "member": "m3q32AL3",
+   "st1_tau": 0.8,
+   "st1_prior": [
+    0.47811304717382064,
+    0.45431364215894604,
+    0.05184870378240544,
+    0.014874628134296642,
+    0.0008499787505312367
+   ],
+   "st2": {
+    "toys": {
+     "t": 0.06,
+     "f1_oof": 0.4348,
+     "support": 77,
+     "src": "grid"
+    },
+    "food": {
+     "t": 0.3771626297577855,
+     "f1_oof": 0.7543,
+     "support": 293,
+     "src": "shrunk"
+    },
+    "apps": {
+     "t": 0.05,
+     "f1_oof": 0.6602,
+     "support": 654,
+     "src": "grid"
+    },
+    "hardware_electronics": {
+     "t": 0.76,
+     "f1_oof": 0.738,
+     "support": 516,
+     "src": "grid"
+    },
+    "fashion": {
+     "t": 0.25,
+     "f1_oof": 0.4513,
+     "support": 267,
+     "src": "grid"
+    },
+    "health": {
+     "t": 0.19,
+     "f1_oof": 0.7568,
+     "support": 264,
+     "src": "grid"
+    },
+    "education": {
+     "t": 0.35,
+     "f1_oof": 0.7829,
+     "support": 140,
+     "src": "grid"
+    },
+    "financial": {
+     "t": 0.95,
+     "f1_oof": 0.5792,
+     "support": 135,
+     "src": "grid"
+    },
+    "gambling": {
+     "t": 0.4090909090909091,
+     "f1_oof": 0.8182,
+     "support": 12,
+     "src": "lipton"
+    },
+    "gambling_adjacent": {
+     "t": 0.17,
+     "f1_oof": 0.5538,
+     "support": 92,
+     "src": "grid"
+    },
+    "creator_community": {
+     "t": 0.11,
+     "f1_oof": 0.3079,
+     "support": 269,
+     "src": "grid"
+    },
+    "other": {
+     "t": 0.03,
+     "f1_oof": 0.4864,
+     "support": 412,
+     "src": "grid"
+    }
+   },
+   "st3": {
+    "undisclosed_advertising": {
+     "t": 0.44,
+     "f1_oof": 0.5868,
+     "support": 352,
+     "src": "grid"
+    },
+    "inadequate_disclosure": {
+     "t": 0.01,
+     "f1_oof": 0.3755,
+     "support": 611,
+     "src": "grid"
+    },
+    "direct_exhortation": {
+     "t": 0.95,
+     "f1_oof": 0.4768,
+     "support": 304,
+     "src": "grid"
+    },
+    "misleading_claim": {
+     "t": 0.01,
+     "f1_oof": 0.4984,
+     "support": 1277,
+     "src": "grid"
+    },
+    "age_restricted_or_prohibited_product": {
+     "t": 0.03,
+     "f1_oof": 0.5789,
+     "support": 59,
+     "src": "grid"
+    },
+    "hfss_food_marketing": {
+     "t": 0.71,
+     "f1_oof": 0.5205,
+     "support": 40,
+     "src": "grid"
+    },
+    "no_flag": {
+     "t": 0.95,
+     "f1_oof": 0.478,
+     "support": 529,
+     "src": "grid"
+    },
+    "insufficient_context": {
+     "t": 0.04,
+     "f1_oof": 0.25,
+     "support": 15,
+     "src": "grid"
+    }
+   }
+  },
+  "4": {
+   "member": "m3q32A",
+   "st1_tau": 0.6,
+   "st1_prior": [
+    0.47811304717382064,
+    0.45431364215894604,
+    0.05184870378240544,
+    0.014874628134296642,
+    0.0008499787505312367
+   ],
+   "st2": {
+    "toys": {
+     "t": 0.01,
+     "f1_oof": 0.5548,
+     "support": 77,
+     "src": "grid"
+    },
+    "food": {
+     "t": 0.04,
+     "f1_oof": 0.8465,
+     "support": 293,
+     "src": "grid"
+    },
+    "apps": {
+     "t": 0.21,
+     "f1_oof": 0.69,
+     "support": 654,
+     "src": "grid"
+    },
+    "hardware_electronics": {
+     "t": 0.95,
+     "f1_oof": 0.7936,
+     "support": 516,
+     "src": "grid"
+    },
+    "fashion": {
+     "t": 0.44,
+     "f1_oof": 0.7703,
+     "support": 267,
+     "src": "grid"
+    },
+    "health": {
+     "t": 0.392914653784219,
+     "f1_oof": 0.7858,
+     "support": 264,
+     "src": "shrunk"
+    },
+    "education": {
+     "t": 0.35,
+     "f1_oof": 0.8227,
+     "support": 140,
+     "src": "grid"
+    },
+    "financial": {
+     "t": 0.95,
+     "f1_oof": 0.6411,
+     "support": 135,
+     "src": "shrunk"
+    },
+    "gambling": {
+     "t": 0.4583333333333333,
+     "f1_oof": 0.9167,
+     "support": 12,
+     "src": "lipton"
+    },
+    "gambling_adjacent": {
+     "t": 0.19,
+     "f1_oof": 0.5842,
+     "support": 92,
+     "src": "grid"
+    },
+    "creator_community": {
+     "t": 0.23,
+     "f1_oof": 0.5022,
+     "support": 269,
+     "src": "grid"
+    },
+    "other": {
+     "t": 0.04,
+     "f1_oof": 0.5039,
+     "support": 412,
+     "src": "grid"
+    }
+   },
+   "st3": {
+    "undisclosed_advertising": {
+     "t": 0.57,
+     "f1_oof": 0.5946,
+     "support": 352,
+     "src": "grid"
+    },
+    "inadequate_disclosure": {
+     "t": 0.01,
+     "f1_oof": 0.37,
+     "support": 611,
+     "src": "grid"
+    },
+    "direct_exhortation": {
+     "t": 0.9,
+     "f1_oof": 0.4753,
+     "support": 304,
+     "src": "grid"
+    },
+    "misleading_claim": {
+     "t": 0.01,
+     "f1_oof": 0.5983,
+     "support": 1277,
+     "src": "grid"
+    },
+    "age_restricted_or_prohibited_product": {
+     "t": 0.03,
+     "f1_oof": 0.6364,
+     "support": 59,
+     "src": "grid"
+    },
+    "hfss_food_marketing": {
+     "t": 0.93,
+     "f1_oof": 0.4483,
+     "support": 40,
+     "src": "shrunk"
+    },
+    "no_flag": {
+     "t": 0.95,
+     "f1_oof": 0.4984,
+     "support": 529,
+     "src": "grid"
+    },
+    "insufficient_context": {
+     "t": 0.02,
+     "f1_oof": 0.0909,
+     "support": 15,
+     "src": "grid"
+    }
+   }
+  }
+ },
+ "reps": 4000
+}

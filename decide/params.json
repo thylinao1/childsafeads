@@ -1,0 +1,150 @@
+{
+ "members": [
+  "m1d",
+  "m1m",
+  "m3q32A",
+  "m0s",
+  "s3s",
+  "m2qS2"
+ ],
+ "weights": null,
+ "st1_tau": 0.4,
+ "st1_other_tau": 1.01,
+ "st1_prior": [
+  0.47811304717382064,
+  0.45431364215894604,
+  0.05184870378240544,
+  0.014874628134296642,
+  0.0008499787505312367
+ ],
+ "st2": {
+  "toys": {
+   "t": 0.28,
+   "f1_oof": 0.8176,
+   "support": 77,
+   "src": "grid"
+  },
+  "food": {
+   "t": 0.52,
+   "f1_oof": 0.9466,
+   "support": 293,
+   "src": "grid"
+  },
+  "apps": {
+   "t": 0.53,
+   "f1_oof": 0.8511,
+   "support": 654,
+   "src": "grid"
+  },
+  "hardware_electronics": {
+   "t": 0.37,
+   "f1_oof": 0.8706,
+   "support": 516,
+   "src": "grid"
+  },
+  "fashion": {
+   "t": 0.47,
+   "f1_oof": 0.8868,
+   "support": 267,
+   "src": "grid"
+  },
+  "health": {
+   "t": 0.56,
+   "f1_oof": 0.8639,
+   "support": 264,
+   "src": "grid"
+  },
+  "education": {
+   "t": 0.3,
+   "f1_oof": 0.8789,
+   "support": 140,
+   "src": "grid"
+  },
+  "financial": {
+   "t": 0.52,
+   "f1_oof": 0.8736,
+   "support": 135,
+   "src": "grid"
+  },
+  "gambling": {
+   "t": 0.4782608695652174,
+   "f1_oof": 0.9565,
+   "support": 12,
+   "src": "lipton"
+  },
+  "gambling_adjacent": {
+   "t": 0.4,
+   "f1_oof": 0.7565,
+   "support": 92,
+   "src": "grid"
+  },
+  "creator_community": {
+   "t": 0.45,
+   "f1_oof": 0.7471,
+   "support": 269,
+   "src": "grid"
+  },
+  "other": {
+   "t": 0.35,
+   "f1_oof": 0.6667,
+   "support": 412,
+   "src": "grid"
+  }
+ },
+ "st3": {
+  "undisclosed_advertising": {
+   "t": 0.23,
+   "f1_oof": 0.9018,
+   "support": 352,
+   "src": "grid"
+  },
+  "inadequate_disclosure": {
+   "t": 0.26,
+   "f1_oof": 0.5013,
+   "support": 611,
+   "src": "grid"
+  },
+  "direct_exhortation": {
+   "t": 0.56,
+   "f1_oof": 0.4978,
+   "support": 304,
+   "src": "grid"
+  },
+  "misleading_claim": {
+   "t": 0.26,
+   "f1_oof": 0.7792,
+   "support": 1277,
+   "src": "grid"
+  },
+  "age_restricted_or_prohibited_product": {
+   "t": 0.1,
+   "f1_oof": 0.6992,
+   "support": 59,
+   "src": "grid"
+  },
+  "hfss_food_marketing": {
+   "t": 0.52,
+   "f1_oof": 0.5234,
+   "support": 40,
+   "src": "grid"
+  },
+  "no_flag": {
+   "t": 0.46,
+   "f1_oof": 0.5763,
+   "support": 529,
+   "src": "grid"
+  },
+  "insufficient_context": {
+   "t": 0.28,
+   "f1_oof": 0.5161,
+   "support": 15,
+   "src": "grid"
+  }
+ },
+ "st3_nf": {
+  "nf_tau": 0.4,
+  "nf_margin": -0.1,
+  "ic_tau": 1.01,
+  "ic_preempt_tau": 0.29
+ }
+}
