@@ -612,9 +612,7 @@ Disclosure trail. The fact sheet filed with the final submission (892820) stated
 output labels were set by hand; there is no fact-sheet question about manual labelling, so that
 sentence was volunteered. On 2026-08-19, after the phase closed, the author emailed all four
 organisers identifying the conflict with item 6, before any external party had raised it, and
-offered to accept any adjustment. The organisers replied the same day that they had reproduced
-the difference between the versions, that it did not significantly affect the leaderboard, and
-that the entry would be considered. The undercount and the misattribution described above were
+offered to accept any adjustment. The undercount and the misattribution described above were
 found later, on 2026-08-22, and were sent to the organisers as a correction.
 
 After the phase closed the advertiser precedent behind label 1 was implemented as code, in

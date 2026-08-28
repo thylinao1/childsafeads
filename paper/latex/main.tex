@@ -295,8 +295,7 @@ be reported \cite{chaibubneto2016reducing}. The adaptive-analysis literature
 \cite{dwork2015reusable} and operational leaderboard design \cite{lin2022msmarco} bear on the
 same problem, and the case against reading a leaderboard as a ranking of systems predates this
 task \cite{ethayarajh2020utility}. The organisers, to whom this was reported, confirmed the
-recovery against their own labels and intend to change it for the next edition (personal
-communication).
+recovery against their own labels (personal communication).
 
 \section{What the data and the compute provided}
 \label{sec:bought}
@@ -385,8 +384,9 @@ it improves explanation quality without consistently improving detection.
 \section{The benchmark is channel-disjoint, not advertiser-disjoint}
 \label{sec:advertiser}
 
-The overview states that brands and destinations are not held out. This section quantifies what
-that is worth. Taking an advertiser to be the registrable domain of the resolved product-page
+The overview states that brands and destinations are not held out, and the organisers have
+independently observed the resulting overlap (personal communication). This section quantifies
+what that is worth. Taking an advertiser to be the registrable domain of the resolved product-page
 URL, no channel is shared between the evaluation split and the labelled data, but $54.5\%$ of
 evaluation-split advertisers already appear there, and $70.4\%$ of evaluation rows carry an
 advertiser that does.
@@ -449,11 +449,8 @@ described here only. No evidence is held about any other entry, and the point is
 does not carry such evidence in either direction. A low-cost remedy is available: collect the
 producing code, rerun it, diff the output against the submitted file, and inspect any rule that
 fires on a small number of instances. Such a check would have identified the edits reported here.
-The organisers confirm that no check of this kind was run: the phase collected predictions and
-the fact sheet, not code, and what is known about the provenance of entries is what teams chose
-to report. They also state that the disclosure described here was not the only voluntary
-disclosure they received. For this entry, they reproduced the score difference and confirmed
-that the entry would be considered (personal communication, T.~Bertaglia, August 2026).
+No check of this kind was run: with no code collected, the provenance of a submitted file was
+not independently verified, and what is known about it is what teams chose to report.
 
 After the phase closed, the precedent behind the Omaze label was implemented as code, with its
 brand vocabulary built only from the labelled splits and its parameters fixed before first
