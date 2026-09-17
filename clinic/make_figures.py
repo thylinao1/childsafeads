@@ -43,22 +43,25 @@ cols = {t: LA._macro_from_counts(*[counts @ M for M in agg[t]]) for t in ("st1",
 metric = sum(cols.values()) / 3
 has = (counts @ rare_per_ch) > 0
 
-fig, ax = plt.subplots(figsize=(2.78, 2.05))
+fig, ax = plt.subplots(figsize=(2.78, 2.25))
 bins = np.linspace(metric.min(), metric.max(), 70)
-ax.hist(metric[has], bins=bins, color="#3b5f9e", alpha=0.95,
-        label=f"gold `other` drawn ({100*has.mean():.0f}%)")
-ax.hist(metric[~has], bins=bins, color="#d9a441", alpha=0.95, hatch="///", edgecolor="#7a5a10", linewidth=0.0,
-        label=f"not drawn ({100*(~has).mean():.0f}%)")
+n_has, _, _ = ax.hist(metric[has], bins=bins, color="#3b5f9e", alpha=0.95,
+                      label=f"gold 'other' drawn ({100*has.mean():.0f}%)")
+n_not, _, _ = ax.hist(metric[~has], bins=bins, color="#d9a441", alpha=0.95, hatch="///",
+                      edgecolor="#7a5a10", linewidth=0.0,
+                      label=f"not drawn ({100*(~has).mean():.0f}%)")
+top = float(max(n_has.max(), n_not.max()))
 for m, c, st in ((metric[has].mean(), "#3b5f9e", "--"), (metric[~has].mean(), "#7a5a10", ":")):
-    ax.axvline(m, color=c, lw=1.1, ls=st)
-ax.annotate("", xy=(metric[~has].mean(), 325), xytext=(metric[has].mean(), 325),
+    ax.vlines(m, 0, 1.15 * top, color=c, lw=1.1, ls=st)
+ax.annotate("", xy=(metric[~has].mean(), 1.10 * top), xytext=(metric[has].mean(), 1.10 * top),
             arrowprops=dict(arrowstyle="<->", lw=0.7, color="black"))
-ax.text((metric[has].mean() + metric[~has].mean()) / 2, 350,
+ax.text((metric[has].mean() + metric[~has].mean()) / 2, 1.19 * top,
         f"{metric[~has].mean()-metric[has].mean():+.3f}", ha="center", fontsize=8)
 ax.set_xlabel("mean macro-F1, channel resample of the out-of-fold split")
 ax.set_ylabel("replicates")
-ax.set_ylim(0, 520)
-ax.legend(frameon=False, fontsize=8.5, loc="upper center", handlelength=1.1, borderaxespad=0.2)
+ax.set_ylim(0, 1.32 * top)
+ax.legend(frameon=False, fontsize=8, loc="lower center", bbox_to_anchor=(0.5, 1.0), ncol=2,
+          handlelength=1.1, columnspacing=1.2, borderaxespad=0.0)
 for s in ("top", "right"):
     ax.spines[s].set_visible(False)
 fig.tight_layout(pad=0.25)
