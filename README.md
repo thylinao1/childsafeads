@@ -47,6 +47,8 @@ python3 clinic/member_ablation.py      # leave-one-out ensemble anatomy
 python3 clinic/advertiser_overlap.py   # advertiser recurrence across splits
 python3 clinic/testsize_noise.py       # standard error at evaluation size
 python3 clinic/hand_label_audit.py     # recovers the hand-set labels from submitted archives
+python3 clinic/per_class_report.py --oof-preds preds_oof.jsonl --dev-preds preds_dev.jsonl --latex
+                                       # per-class P/R/F1 and the ST1 confusion matrix (paper Appendix C)
 ```
 
 `eval/local_scorer.py` implements present-label-set macro-F1 and pins itself against the
@@ -60,6 +62,20 @@ system, which conflicts with Competition Terms item 6. This was raised with the 
 the phase closed. `METHOD.md` section 7.5 gives the complete account, and
 `clinic/hand_label_audit.py` reconstructs it from the submitted archives. The score reported as
 the system's own is 0.6537, the last entry containing no hand-set label.
+
+The edits were possible because the submitted file was assembled by hand from an emitted one.
+`generate_submission.py --from-manifest` now verifies the pinned configuration
+(`clinic/config_manifest.py verify`), re-emits the split from the pinned member probabilities
+and `decide/params.json`, refuses to package a predictions file unless every row is identical
+to that emission, and writes `<out>.provenance.json` with the archive's sha256 and the manifest
+note, so that an uploaded file can be tied back to the configuration that produced it:
+
+```bash
+python3 decide/decision_layer.py emit --members m1d,m1m,m3q32A,m0s,s3s,m2qS2 --split test \
+  --out preds_test_rebuilt.jsonl
+python3 generate_submission.py --preds preds_test_rebuilt.jsonl --split test \
+  --out submission_test_rebuilt.zip --from-manifest
+```
 
 ## Licence
 

@@ -1,0 +1,610 @@
+{
+ "oof": {
+  "n": 2353,
+  "tasks": {
+   "st1": {
+    "physical_goods": {
+     "support": 1125,
+     "predicted": 1110,
+     "tp": 1064,
+     "fp": 46,
+     "fn": 61,
+     "precision": 0.9585585585585585,
+     "recall": 0.9457777777777778,
+     "f1": 0.9521252796420582
+    },
+    "digital_content_or_services": {
+     "support": 1069,
+     "predicted": 1075,
+     "tp": 1009,
+     "fp": 66,
+     "fn": 60,
+     "precision": 0.9386046511627907,
+     "recall": 0.9438727782974743,
+     "f1": 0.941231343283582
+    },
+    "physical_services": {
+     "support": 122,
+     "predicted": 116,
+     "tp": 88,
+     "fp": 28,
+     "fn": 34,
+     "precision": 0.7586206896551724,
+     "recall": 0.7213114754098361,
+     "f1": 0.7394957983193278
+    },
+    "none": {
+     "support": 35,
+     "predicted": 52,
+     "tp": 24,
+     "fp": 28,
+     "fn": 11,
+     "precision": 0.46153846153846156,
+     "recall": 0.6857142857142857,
+     "f1": 0.5517241379310345
+    },
+    "other": {
+     "support": 2,
+     "predicted": 0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 2,
+     "precision": null,
+     "recall": 0.0,
+     "f1": 0.0
+    }
+   },
+   "st2": {
+    "toys": {
+     "support": 77,
+     "predicted": 82,
+     "tp": 65,
+     "fp": 17,
+     "fn": 12,
+     "precision": 0.7926829268292683,
+     "recall": 0.8441558441558441,
+     "f1": 0.8176100628930818
+    },
+    "food": {
+     "support": 293,
+     "predicted": 293,
+     "tp": 277,
+     "fp": 16,
+     "fn": 16,
+     "precision": 0.9453924914675768,
+     "recall": 0.9453924914675768,
+     "f1": 0.9453924914675768
+    },
+    "apps": {
+     "support": 654,
+     "predicted": 692,
+     "tp": 574,
+     "fp": 118,
+     "fn": 80,
+     "precision": 0.8294797687861272,
+     "recall": 0.8776758409785933,
+     "f1": 0.8528974739970282
+    },
+    "hardware_electronics": {
+     "support": 516,
+     "predicted": 547,
+     "tp": 461,
+     "fp": 86,
+     "fn": 55,
+     "precision": 0.8427787934186471,
+     "recall": 0.8934108527131783,
+     "f1": 0.8673565380997178
+    },
+    "fashion": {
+     "support": 267,
+     "predicted": 274,
+     "tp": 239,
+     "fp": 35,
+     "fn": 28,
+     "precision": 0.8722627737226277,
+     "recall": 0.8951310861423221,
+     "f1": 0.8835489833641405
+    },
+    "health": {
+     "support": 264,
+     "predicted": 249,
+     "tp": 222,
+     "fp": 27,
+     "fn": 42,
+     "precision": 0.891566265060241,
+     "recall": 0.8409090909090909,
+     "f1": 0.8654970760233918
+    },
+    "education": {
+     "support": 140,
+     "predicted": 149,
+     "tp": 127,
+     "fp": 22,
+     "fn": 13,
+     "precision": 0.8523489932885906,
+     "recall": 0.9071428571428571,
+     "f1": 0.8788927335640139
+    },
+    "financial": {
+     "support": 135,
+     "predicted": 127,
+     "tp": 114,
+     "fp": 13,
+     "fn": 21,
+     "precision": 0.8976377952755905,
+     "recall": 0.8444444444444444,
+     "f1": 0.8702290076335878
+    },
+    "gambling": {
+     "support": 12,
+     "predicted": 11,
+     "tp": 11,
+     "fp": 0,
+     "fn": 1,
+     "precision": 1.0,
+     "recall": 0.9166666666666666,
+     "f1": 0.9565217391304348
+    },
+    "gambling_adjacent": {
+     "support": 92,
+     "predicted": 101,
+     "tp": 73,
+     "fp": 28,
+     "fn": 19,
+     "precision": 0.7227722772277227,
+     "recall": 0.7934782608695652,
+     "f1": 0.7564766839378239
+    },
+    "creator_community": {
+     "support": 269,
+     "predicted": 249,
+     "tp": 193,
+     "fp": 56,
+     "fn": 76,
+     "precision": 0.7751004016064257,
+     "recall": 0.7174721189591078,
+     "f1": 0.7451737451737451
+    },
+    "other": {
+     "support": 412,
+     "predicted": 463,
+     "tp": 292,
+     "fp": 171,
+     "fn": 120,
+     "precision": 0.6306695464362851,
+     "recall": 0.7087378640776699,
+     "f1": 0.6674285714285715
+    }
+   },
+   "st3": {
+    "undisclosed_advertising": {
+     "support": 352,
+     "predicted": 347,
+     "tp": 303,
+     "fp": 44,
+     "fn": 49,
+     "precision": 0.8731988472622478,
+     "recall": 0.8607954545454546,
+     "f1": 0.8669527896995708
+    },
+    "inadequate_disclosure": {
+     "support": 611,
+     "predicted": 770,
+     "tp": 370,
+     "fp": 400,
+     "fn": 241,
+     "precision": 0.4805194805194805,
+     "recall": 0.6055646481178396,
+     "f1": 0.5358435916002896
+    },
+    "direct_exhortation": {
+     "support": 304,
+     "predicted": 375,
+     "tp": 169,
+     "fp": 206,
+     "fn": 135,
+     "precision": 0.45066666666666666,
+     "recall": 0.555921052631579,
+     "f1": 0.49779086892488955
+    },
+    "misleading_claim": {
+     "support": 1277,
+     "predicted": 1399,
+     "tp": 1037,
+     "fp": 362,
+     "fn": 240,
+     "precision": 0.7412437455325233,
+     "recall": 0.8120595144870791,
+     "f1": 0.7750373692077728
+    },
+    "age_restricted_or_prohibited_product": {
+     "support": 59,
+     "predicted": 62,
+     "tp": 41,
+     "fp": 21,
+     "fn": 18,
+     "precision": 0.6612903225806451,
+     "recall": 0.6949152542372882,
+     "f1": 0.6776859504132231
+    },
+    "hfss_food_marketing": {
+     "support": 40,
+     "predicted": 67,
+     "tp": 28,
+     "fp": 39,
+     "fn": 12,
+     "precision": 0.417910447761194,
+     "recall": 0.7,
+     "f1": 0.5233644859813084
+    },
+    "no_flag": {
+     "support": 529,
+     "predicted": 556,
+     "tp": 316,
+     "fp": 240,
+     "fn": 213,
+     "precision": 0.5683453237410072,
+     "recall": 0.5973534971644613,
+     "f1": 0.5824884792626728
+    },
+    "insufficient_context": {
+     "support": 15,
+     "predicted": 13,
+     "tp": 7,
+     "fp": 6,
+     "fn": 8,
+     "precision": 0.5384615384615384,
+     "recall": 0.4666666666666667,
+     "f1": 0.5
+    }
+   }
+  },
+  "macro": {
+   "st1": 0.6369153118352004,
+   "st2": 0.8422520922260928,
+   "st3": 0.6198954418862159,
+   "mean": 0.6996876153158365
+  },
+  "confusion_st1": {
+   "physical_goods": {
+    "physical_goods": 1064,
+    "digital_content_or_services": 38,
+    "physical_services": 15,
+    "none": 8,
+    "other": 0
+   },
+   "digital_content_or_services": {
+    "physical_goods": 32,
+    "digital_content_or_services": 1009,
+    "physical_services": 11,
+    "none": 17,
+    "other": 0
+   },
+   "physical_services": {
+    "physical_goods": 8,
+    "digital_content_or_services": 23,
+    "physical_services": 88,
+    "none": 3,
+    "other": 0
+   },
+   "none": {
+    "physical_goods": 5,
+    "digital_content_or_services": 4,
+    "physical_services": 2,
+    "none": 24,
+    "other": 0
+   },
+   "other": {
+    "physical_goods": 1,
+    "digital_content_or_services": 1,
+    "physical_services": 0,
+    "none": 0,
+    "other": 0
+   }
+  }
+ },
+ "dev": {
+  "n": 504,
+  "tasks": {
+   "st1": {
+    "physical_goods": {
+     "support": 218,
+     "predicted": 221,
+     "tp": 205,
+     "fp": 16,
+     "fn": 13,
+     "precision": 0.9276018099547512,
+     "recall": 0.9403669724770642,
+     "f1": 0.9339407744874715
+    },
+    "digital_content_or_services": {
+     "support": 248,
+     "predicted": 245,
+     "tp": 232,
+     "fp": 13,
+     "fn": 16,
+     "precision": 0.9469387755102041,
+     "recall": 0.9354838709677419,
+     "f1": 0.9411764705882353
+    },
+    "physical_services": {
+     "support": 24,
+     "predicted": 26,
+     "tp": 21,
+     "fp": 5,
+     "fn": 3,
+     "precision": 0.8076923076923077,
+     "recall": 0.875,
+     "f1": 0.84
+    },
+    "none": {
+     "support": 14,
+     "predicted": 12,
+     "tp": 9,
+     "fp": 3,
+     "fn": 5,
+     "precision": 0.75,
+     "recall": 0.6428571428571429,
+     "f1": 0.6923076923076923
+    },
+    "other": {
+     "support": 0,
+     "predicted": 0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 0,
+     "precision": null,
+     "recall": null,
+     "f1": null
+    }
+   },
+   "st2": {
+    "toys": {
+     "support": 8,
+     "predicted": 9,
+     "tp": 6,
+     "fp": 3,
+     "fn": 2,
+     "precision": 0.6666666666666666,
+     "recall": 0.75,
+     "f1": 0.7058823529411765
+    },
+    "food": {
+     "support": 49,
+     "predicted": 46,
+     "tp": 45,
+     "fp": 1,
+     "fn": 4,
+     "precision": 0.9782608695652174,
+     "recall": 0.9183673469387755,
+     "f1": 0.9473684210526315
+    },
+    "apps": {
+     "support": 171,
+     "predicted": 188,
+     "tp": 155,
+     "fp": 33,
+     "fn": 16,
+     "precision": 0.824468085106383,
+     "recall": 0.9064327485380117,
+     "f1": 0.8635097493036211
+    },
+    "hardware_electronics": {
+     "support": 120,
+     "predicted": 125,
+     "tp": 112,
+     "fp": 13,
+     "fn": 8,
+     "precision": 0.896,
+     "recall": 0.9333333333333333,
+     "f1": 0.9142857142857143
+    },
+    "fashion": {
+     "support": 50,
+     "predicted": 56,
+     "tp": 44,
+     "fp": 12,
+     "fn": 6,
+     "precision": 0.7857142857142857,
+     "recall": 0.88,
+     "f1": 0.8301886792452831
+    },
+    "health": {
+     "support": 55,
+     "predicted": 57,
+     "tp": 49,
+     "fp": 8,
+     "fn": 6,
+     "precision": 0.8596491228070176,
+     "recall": 0.8909090909090909,
+     "f1": 0.875
+    },
+    "education": {
+     "support": 12,
+     "predicted": 11,
+     "tp": 8,
+     "fp": 3,
+     "fn": 4,
+     "precision": 0.7272727272727273,
+     "recall": 0.6666666666666666,
+     "f1": 0.6956521739130435
+    },
+    "financial": {
+     "support": 20,
+     "predicted": 18,
+     "tp": 14,
+     "fp": 4,
+     "fn": 6,
+     "precision": 0.7777777777777778,
+     "recall": 0.7,
+     "f1": 0.7368421052631579
+    },
+    "gambling": {
+     "support": 5,
+     "predicted": 3,
+     "tp": 2,
+     "fp": 1,
+     "fn": 3,
+     "precision": 0.6666666666666666,
+     "recall": 0.4,
+     "f1": 0.5
+    },
+    "gambling_adjacent": {
+     "support": 17,
+     "predicted": 19,
+     "tp": 14,
+     "fp": 5,
+     "fn": 3,
+     "precision": 0.7368421052631579,
+     "recall": 0.8235294117647058,
+     "f1": 0.7777777777777778
+    },
+    "creator_community": {
+     "support": 47,
+     "predicted": 52,
+     "tp": 33,
+     "fp": 19,
+     "fn": 14,
+     "precision": 0.6346153846153846,
+     "recall": 0.7021276595744681,
+     "f1": 0.6666666666666666
+    },
+    "other": {
+     "support": 87,
+     "predicted": 77,
+     "tp": 47,
+     "fp": 30,
+     "fn": 40,
+     "precision": 0.6103896103896104,
+     "recall": 0.5402298850574713,
+     "f1": 0.573170731707317
+    }
+   },
+   "st3": {
+    "undisclosed_advertising": {
+     "support": 74,
+     "predicted": 71,
+     "tp": 61,
+     "fp": 10,
+     "fn": 13,
+     "precision": 0.8591549295774648,
+     "recall": 0.8243243243243243,
+     "f1": 0.8413793103448276
+    },
+    "inadequate_disclosure": {
+     "support": 118,
+     "predicted": 142,
+     "tp": 59,
+     "fp": 83,
+     "fn": 59,
+     "precision": 0.4154929577464789,
+     "recall": 0.5,
+     "f1": 0.45384615384615384
+    },
+    "direct_exhortation": {
+     "support": 77,
+     "predicted": 97,
+     "tp": 47,
+     "fp": 50,
+     "fn": 30,
+     "precision": 0.4845360824742268,
+     "recall": 0.6103896103896104,
+     "f1": 0.5402298850574713
+    },
+    "misleading_claim": {
+     "support": 260,
+     "predicted": 307,
+     "tp": 221,
+     "fp": 86,
+     "fn": 39,
+     "precision": 0.7198697068403909,
+     "recall": 0.85,
+     "f1": 0.7795414462081128
+    },
+    "age_restricted_or_prohibited_product": {
+     "support": 16,
+     "predicted": 13,
+     "tp": 10,
+     "fp": 3,
+     "fn": 6,
+     "precision": 0.7692307692307693,
+     "recall": 0.625,
+     "f1": 0.6896551724137931
+    },
+    "hfss_food_marketing": {
+     "support": 5,
+     "predicted": 18,
+     "tp": 3,
+     "fp": 15,
+     "fn": 2,
+     "precision": 0.16666666666666666,
+     "recall": 0.6,
+     "f1": 0.2608695652173913
+    },
+    "no_flag": {
+     "support": 127,
+     "predicted": 121,
+     "tp": 67,
+     "fp": 54,
+     "fn": 60,
+     "precision": 0.5537190082644629,
+     "recall": 0.5275590551181102,
+     "f1": 0.5403225806451613
+    },
+    "insufficient_context": {
+     "support": 7,
+     "predicted": 11,
+     "tp": 6,
+     "fp": 5,
+     "fn": 1,
+     "precision": 0.5454545454545454,
+     "recall": 0.8571428571428571,
+     "f1": 0.6666666666666666
+    }
+   }
+  },
+  "macro": {
+   "st1": 0.8518562343458498,
+   "st2": 0.7571953643463658,
+   "st3": 0.5965638475499473,
+   "mean": 0.7352051487473877
+  },
+  "confusion_st1": {
+   "physical_goods": {
+    "physical_goods": 205,
+    "digital_content_or_services": 9,
+    "physical_services": 3,
+    "none": 1,
+    "other": 0
+   },
+   "digital_content_or_services": {
+    "physical_goods": 13,
+    "digital_content_or_services": 232,
+    "physical_services": 2,
+    "none": 1,
+    "other": 0
+   },
+   "physical_services": {
+    "physical_goods": 2,
+    "digital_content_or_services": 0,
+    "physical_services": 21,
+    "none": 1,
+    "other": 0
+   },
+   "none": {
+    "physical_goods": 1,
+    "digital_content_or_services": 4,
+    "physical_services": 0,
+    "none": 9,
+    "other": 0
+   },
+   "other": {
+    "physical_goods": 0,
+    "digital_content_or_services": 0,
+    "physical_services": 0,
+    "none": 0,
+    "other": 0
+   }
+  }
+ }
+}

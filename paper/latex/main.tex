@@ -58,43 +58,36 @@ macro-F1 columns; twenty-one teams finished the evaluation phase on Codabench
 The entry is a conventional ensemble made competitive by measurement discipline rather than by
 any novel component: two fine-tuned encoders, a zero-shot prompted 32B model, a LoRA-tuned 14B
 classifier kept only where it measurably helps, a TF-IDF baseline and a level-2 stacker, behind
-a decision layer fitted only on channel-grouped out-of-fold predictions.
-Figure~\ref{fig:pipeline} shows the pipeline; Section~\ref{sec:system} describes each stage and
-the validation protocol that admitted or rejected every candidate change.
+a decision layer fitted only on channel-grouped out-of-fold predictions (Figure~\ref{fig:pipeline};
+\S\ref{sec:system} describes each stage and the protocol that admitted or rejected every change).
 
-The shared task was built to ask what a monitoring system gains from each level of data access
-and at what cost. Measured on this system: the zero-shot member contributes the most at nearly
-the lowest cost, and a fine-tuned encoder costing six GPU-hours is removable at no measurable
-cost (\S\ref{sec:anatomy}); access level 3, the channel name, adds nothing measurable, while
-level 4, the product-page crawl, is worth $+0.063$ mean macro-F1 on the member measured, almost
-all of it on product identification and none of it detectable on the compliance flags
-(\S\ref{sec:bought}). The compliance sub-task appears label-limited rather than data-limited:
-the organisers' two annotator models agree on only $44.4\%$ of instances there.
-
-Establishing which changes were real required a validation harness, which also measured
-properties of the evaluation itself: a divisor that dominates score variance and is recoverable
-in closed form from a published baseline row, and $70.4\%$ advertiser overlap across
-channel-disjoint splits. Those findings are reported in \S\ref{sec:evaluation} as feedback to
-the organisers rather than as the paper's subject.
+The task asks what a monitoring system gains from each level of data access and at what cost;
+measured here, the zero-shot member contributes the most at nearly the lowest cost, and a
+six-GPU-hour encoder is removable at no measurable cost (\S\ref{sec:anatomy}); level 3, the
+channel name, adds nothing measurable, while level 4, the product-page crawl, is worth $+0.063$
+mean macro-F1 on the member measured, almost all of it on product identification and none of it
+detectable on the compliance flags (\S\ref{sec:bought}), where the organisers' two annotator
+models agree on only $44.4\%$ of instances. The validation harness that gated those changes
+also measured properties of the evaluation itself (a divisor that dominates score variance and
+is recoverable from a published baseline row, and $70.4\%$ advertiser overlap across
+channel-disjoint splits), reported in \S\ref{sec:evaluation} as feedback to the organisers.
 
 \paragraph{Contributions.}
 \textbf{(i)} A documented, reproducible six-member system with component-level attribution and
-the full inference bill for the $503$ test instances (\S\ref{sec:system}, \S\ref{sec:results},
-\S\ref{sec:anatomy}).
-\textbf{(ii)} A controlled answer to the data-access question the task poses, measured on the
-zero-shot member (\S\ref{sec:bought}).
-\textbf{(iii)} Measured feedback on the evaluation for future editions: divisor variance,
-closed-form divisor recovery, and the reach of advertiser memorisation
-(\S\ref{sec:evaluation}).
+the inference bill for the $503$ test instances (\S\ref{sec:system}, \S\ref{sec:results},
+\S\ref{sec:anatomy}); \textbf{(ii)} a controlled answer to the data-access question the task
+poses, measured on the zero-shot member (\S\ref{sec:bought}); \textbf{(iii)} measured feedback
+on the evaluation: divisor variance, closed-form divisor recovery and the reach of advertiser
+memorisation (\S\ref{sec:evaluation}).
 
 \paragraph{Disclosure.}
-The predictions submitted as the final entry contained three labels that were set by hand rather
-than produced by the system, and an earlier submitted entry contained a fourth. The competition
-Terms state, under Competition Conduct, item 6: \emph{``Do not manually label the test set.
-Predictions on the evaluation phase must be produced by your system.''} This was raised with the
-organisers after the phase closed and before any external party had identified it
-(\S\ref{sec:hand}). The score reported throughout as the system's is $0.6537$, the returned
-score of the last entry containing no hand-set label. No rank is claimed.
+The predictions submitted as the final entry contained three labels set by hand rather than
+produced by the system, and an earlier entry a fourth, contrary to the competition Terms
+(Competition Conduct, item 6: \emph{``Do not manually label the test set. Predictions on the
+evaluation phase must be produced by your system.''}). This was raised with the organisers
+after the phase closed and before any external party had identified it (\S\ref{sec:hand}). The
+score reported as the system's is $0.6537$, the returned score of the last entry containing no
+hand-set label; no rank is claimed.
 
 \section{Task, data, and scoring convention}
 \label{sec:task}
@@ -103,20 +96,18 @@ The dataset pairs a SponsorBlock-marked segment with its transcript, video and c
 and a sales page linked from the description, across $3{,}360$ videos from $939$ channels
 \cite{bertaglia2026childsafeads}. Labels were produced by GPT-5.4 under expert review of the
 taxonomy and prompts, with a second model labelling the development split independently
-\cite{gilardi2023chatgpt}. Splits are disjoint by
-channel; as the overview's Table 1 caption states, \emph{``Brands and destinations are not held
-out.''} Section~\ref{sec:advertiser} returns to that.
+\cite{gilardi2023chatgpt}. Splits are disjoint by channel; as the overview's Table 1 caption
+states, \emph{``Brands and destinations are not held out''} (\S\ref{sec:advertiser}).
 
 \paragraph{The scoring convention is not specified.}
 The overview defines the metric as \emph{``F1 for every label and average the labels equally
-(macro-F1)''}, which leaves open how a class absent from both gold and predictions is treated,
-a known ambiguity in reported macro-F1 \cite{opitz2019macro,opitz2024closer}. Scoring the
-organisers' published constant-class baseline under a $2\times2$ grid of label-set and
-zero-division conventions, only the \emph{present-label-set} convention, which averages over
-classes appearing in the gold or the predictions of the scored rows, reproduces the published
-row (ST1 $0.150970$ against $0.1510$; a fixed five-class average gives $0.120776$). It is also
-\texttt{sklearn}'s default when \texttt{labels} is unset \cite{pedregosa2011scikit}. Everything
-below uses this pinned convention, under which the divisor of each column depends on the sample
+(macro-F1)''}, leaving open how a class absent from both gold and predictions is treated, a
+known ambiguity \cite{opitz2019macro,opitz2024closer}. Of a $2\times2$ grid of label-set and
+zero-division conventions, only the \emph{present-label-set} one, which averages over classes
+appearing in the gold or the predictions of the scored rows and is \texttt{sklearn}'s default
+when \texttt{labels} is unset \cite{pedregosa2011scikit}, reproduces the organisers' published
+constant-class baseline (ST1 $0.150970$ against $0.1510$; a fixed five-class average gives
+$0.120776$). Everything below uses it; the divisor of each column then depends on the sample
 scored (\S\ref{sec:divisor}, \S\ref{sec:invert}).
 
 \section{System}
@@ -129,58 +120,68 @@ contribution; Appendix~\ref{app:repro} records every hyperparameter and checkpoi
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=\textwidth]{fig/pipeline.pdf}
+\includegraphics[width=0.96\textwidth]{fig/pipeline.pdf}
 \caption{The pipeline. Six members produce class-probability matrices from the instance fields
-(grouped at left by the task's data access levels); an equal-weight mean blends them; two ST3
-columns are adjusted; a decision layer converts probabilities to labels. Tags mark the
-sub-task columns each member contributes (\lab{m2qS2} and \lab{s3s} hold their remaining
-columns arithmetically neutral). Every decision-layer parameter is fitted on channel-grouped
-out-of-fold predictions only (\S\ref{sec:protocol}).}
+(grouped at left by data access level); an equal-weight mean blends them; two ST3 columns are
+adjusted; a decision layer, every parameter of which is fitted on channel-grouped out-of-fold
+predictions (\S\ref{sec:protocol}), converts probabilities to labels. Tags mark the sub-task
+columns each member contributes.}
 \label{fig:pipeline}
 \end{figure*}
 
 \subsection{Members}
 \label{sec:members}
 
+The roster was fixed by diversity of inductive bias at a set compute budget rather than by
+search: two encoder families with different context windows, fine-tuned on the labels; a large
+generative model prompted with the taxonomy and left untrained, so that its errors are not the
+encoders' and its out-of-fold predictions are honest by construction; a LoRA classifier as the
+trained counterpart of that family; a lexical model for disclosure cues; and a stacker for the
+column on which the members disagree most. Each member had to pass the paired test of
+\S\ref{sec:protocol}; the candidates that failed it (the LoRA model as a full member, a
+gradient-boosted stacker, a fourth encoder seed, reasoning mode and a fourth prompt variant for
+the zero-shot member, fitted blend weights) are listed in \S\ref{sec:failed}.
+
 The two encoders, \lab{m1d} (\lab{microsoft/deberta-v3-large} at $512$ tokens,
 \citealp{he2021deberta}) and \lab{m1m} (\lab{answerdotai/ModernBERT-large} at $2{,}048$ tokens,
 \citealp{warner2024modernbert}), are fine-tuned as one trunk with three heads (softmax ST1,
 sigmoid ST2 and ST3), three seeds each over the same five channel-grouped folds, with the epoch
-count selected once per run, never per fold. Inputs are assembled under per-field token budgets so that a long transcript cannot evict the
-product-page text, and non-transcript fields are dropped at $p{=}0.15$ during training so that
-no single field becomes load-bearing.
+count selected once per run, never per fold. Inputs are assembled under per-field token budgets
+so that a long transcript cannot evict the product-page text, and non-transcript fields are
+dropped at $p{=}0.15$ in training so that no single field becomes load-bearing.
 
 The zero-shot member \lab{m3q32A} prompts \lab{Qwen/Qwen3-32B} \cite{qwen3} through vLLM
 \cite{kwon2023vllm} with the task taxonomy quoted verbatim, guided JSON decoding and temperature
-$0$; a data-guard instruction directs the model to treat the instance as data rather than as
-instructions. Per-label probabilities
-are read from the logprobs of the \lab{yes}/\lab{no} value token rather than from the decoded
-string, and because this member is untrained, its predictions on training rows are honest
-out-of-fold predictions by construction. Prompt variant A, built from the label definitions
-alone, is the blend member; variants B and C feed the ST3 stacker and one rebuilt ST3 column.
+$0$; a data-guard instruction has the model treat the instance as data, not as instructions.
+Per-label probabilities are read from the logprobs of the \lab{yes}/\lab{no} value token rather
+than from the decoded string, and because the member is untrained, its predictions on training
+rows are honest out-of-fold predictions by construction. Prompt variant A, built from the label
+definitions alone, is the blend member; variants B and C feed the ST3 stacker and one rebuilt
+ST3 column.
 
 The LoRA member \lab{m2qS2} fine-tunes \lab{Qwen/Qwen3-14B} as a sequence classifier
 \cite{hu2022lora} over the same folds. As a full sixth member it failed the admission test of
-\S\ref{sec:protocol}, its mean gain being an ST2 gain diluted over three columns. It was
-admitted as a task-limited member that carries the real ST2 column and sets ST1 and ST3 to the
-exact mean of the other five members, making a six-way average arithmetically neutral there; in
-that form it gated at $+0.0071$, CI $[+0.0034,+0.0133]$.
+\S\ref{sec:protocol}, its mean gain being an ST2 gain diluted over three columns; admitted as a
+task-limited member that carries the real ST2 column and sets ST1 and ST3 to the exact mean of
+the other five (arithmetically neutral in a six-way average), it gated at $+0.0071$, CI
+$[+0.0034,+0.0133]$.
 
 The linear member \lab{m0s} fits separate word- and character-gram TF-IDF blocks per field
 group with one-vs-rest logistic regression, so disclosure cues in the description are not
 diluted by page text. The stacker \lab{s3s} \cite{wolpert1992stacked} is a per-flag logistic
 regression for ST3 only, over the ST3 columns of seven member files plus ten auxiliary features
-(disclosure state, sponsorship and disclosure regex hits, log field lengths), with fold honesty
-preserved at level 2 on the same channel grouping.
+(disclosure state, sponsorship and disclosure regex hits, log field lengths), fold-honest at
+level 2 on the same channel grouping.
 
 \subsection{Blend and decision layer}
 \label{sec:decision}
 
 Blending is an equal-weight arithmetic mean; a $16$-configuration weight grid was evaluated and
 rejected (\S\ref{sec:failed}), so no member weights are fitted. Before thresholding, two ST3
-columns are adjusted: \lab{direct\_exhortation} mixes the stacker and the zero-shot member into
-the blended column at equal weight, and \lab{age\_restricted\_or\_prohibited\_product} is
-rebuilt from the four members able to separate that class. Both adjustments apply identically during fitting and emission.
+columns are adjusted, identically during fitting and emission: \lab{direct\_exhortation} mixes
+the stacker and the zero-shot member into the blended column at equal weight, and
+\lab{age\_restricted\_or\_prohibited\_product} is rebuilt from the four members able to
+separate that class.
 
 ST1 is a prior-corrected argmax, $\mathrm{score}(c) = \log p(c) - \tau \log \mathrm{prior}(c)$
 with $\tau{=}0.4$ selected on out-of-fold ST1 macro-F1; the class \lab{other}, with two training
@@ -190,11 +191,11 @@ guards: a threshold whose per-fold optima spread beyond $0.35$ is shrunk toward 
 a class with fewer than $15$ positives uses the plug-in directly, and an empty predicted set
 falls back to the argmax class. ST3 is assembled in three stages: hard rules zero
 $p(\lab{undisclosed\_advertising})$ where a disclosure demonstrably exists (a platform
-paid-promotion label, a spoken sponsorship term, or a disclosure phrase in the description; the
-three fire on $2{,}321$ of the $2{,}857$ labelled rows with one gold violation), thresholds as
-for ST2, and a constraint cascade that enforces exclusivity of the two disclosure flags,
-suppresses flags falling below a cleared \lab{no\_flag}, and lets \lab{insufficient\_context}
-preempt when no strong flag survives.
+paid-promotion label, a spoken sponsorship term or a disclosure phrase in the description:
+$2{,}321$ of the $2{,}857$ labelled rows, one gold violation), thresholds as for ST2, and a
+constraint cascade that enforces exclusivity of the two disclosure flags, suppresses flags
+falling below a cleared \lab{no\_flag}, and lets \lab{insufficient\_context} preempt when no
+strong flag survives.
 
 \subsection{Validation protocol}
 \label{sec:protocol}
@@ -204,10 +205,12 @@ rare-label balancing. Every member is trained within folds; every threshold and 
 parameter is fitted on pooled out-of-fold predictions only; the development split was held out
 of every fit and used as a direction check. Uncertainty is a paired channel-cluster bootstrap
 \cite{efron1979bootstrap}: channels are resampled with replacement, decisions are emitted once
-so that sampling noise rather than tuning noise is measured, and both arms are scored on the
-identical draw. A change was kept only when the $95\%$ interval on its paired delta excluded
-zero, on the mean or on the column it acted on; the rejected ones are catalogued in
-\S\ref{sec:failed}.
+so that sampling rather than tuning noise is measured, and both arms are scored on the identical
+draw. A change was kept only when the $95\%$ interval on its paired delta excluded zero, on the
+mean or on the column it acted on; the rejected ones are catalogued in \S\ref{sec:failed}.
+About sixteen changes were gated this way without a multiplicity correction, above more than
+two thousand threshold-grid evaluations; every interval and asterisk below is uncorrected, and
+a family-wise correction would leave fewer of them significant.
 
 \section{Results}
 \label{sec:results}
@@ -229,34 +232,41 @@ mean & 0.6997 & 0.7352 & \textbf{0.6537} & 0.7260 \\
 \bottomrule
 \end{tabular}
 \caption{Held-out results. \emph{System}: the last submitted entry containing no hand-set
-label, the figure reported throughout as the system's. \emph{Submitted}: the returned score of
-the final entry, which contains three labels the system did not produce (\S\ref{sec:hand}).}
+label, reported throughout as the system's. \emph{Submitted}: the final entry, which contains
+three labels the system did not produce (\S\ref{sec:hand}).}
 \label{tab:results}
 \end{table}
 
-Table~\ref{tab:results} gives the reference numbers on all three splits; uncertainty throughout
-is the paired channel-cluster bootstrap of \S\ref{sec:protocol}.
+Table~\ref{tab:results} gives the reference numbers on all three splits. Resampling $153$
+channels to evaluation size over $2{,}000$ draws, a $503$-row scored estimate has a standard
+error of $0.0326$ on the mean (ST1 $0.0869$, ST2 $0.0254$, ST3 $0.0446$); none of the four
+adjacent gaps in the published top five reaches one standard error
+\cite{card2020power,dror2018hitchhiker}, so this paper does not interpret its position there.
 
-The scale of that noise is worth reporting first. Resampling $153$ channels to evaluation size
-over $2{,}000$ draws, a $503$-row scored estimate has a standard error of $0.0326$ on the mean
-(ST1 $0.0869$, ST2 $0.0254$, ST3 $0.0446$). None of the four adjacent gaps in the published top
-five ($0.0087$, $0.0181$, $0.0057$, $0.0323$) reaches one standard error of the estimate that
-produced them \cite{card2020power,dror2018hitchhiker}, so this paper does not interpret its own
-position in that ordering.
+\paragraph{Where the errors sit.}
+Appendix~\ref{app:perclass} gives per-class precision, recall and F1 on both labelled splits
+and the ST1 confusion matrix. ST1 errors are concentrated in exchanges between
+\lab{physical\_goods} and \lab{digital\_content\_or\_services} ($70$ of $168$ out-of-fold
+errors) and in the small \lab{none} class (F1 $0.55$ out of fold); \lab{other} is never
+predicted. ST2 loses mainly on its residual class \lab{other} ($0.67$) and on
+\lab{creator\_community} ($0.75$). ST3 splits in two: \lab{undisclosed\_advertising} ($0.87$)
+and \lab{misleading\_claim} ($0.78$) are handled well, while the three flags that turn on a
+judgement of degree, \lab{inadequate\_disclosure} ($0.54$), \lab{direct\_exhortation} ($0.50$)
+and \lab{hfss\_food\_marketing} ($0.52$), and the residual \lab{no\_flag} ($0.58$) are where the
+compliance column is lost, each predicted more often than it occurs, on dev as out of fold,
+the pattern the annotator agreement in \S\ref{sec:levels} predicts.
 
 \paragraph{Inference cost at test-set scale.}
-Producing the final predictions for the $503$ evaluation instances takes one inference pass per
-neural member plus a CPU stage. The recorded figure is the zero-shot pass, the largest model in
-the system: $14.4$ minutes on a single H200, including model load, covering two prompt variants
-across all three sub-tasks. The encoder and LoRA members are forward passes of smaller models
-over the same instances, run inside their training jobs, and add minutes rather than hours at
-those jobs' recorded throughputs; the CPU stage emits final labels from stored member
-probabilities in $0.26$ seconds on a laptop. A conservative estimate for the full ensemble is
-under one GPU-hour; retaining only the zero-shot member and the decision layer, which
-Table~\ref{tab:levels} scores at $0.5891$ out of fold against the ensemble's $0.6997$, cuts
-that to about a quarter of a GPU-hour.
+The final predictions for the $503$ evaluation instances take one inference pass per neural
+member plus a CPU stage; the recorded figure is the zero-shot pass, the largest model, at
+$14.4$ minutes on one H200 including model load for two prompt variants across all three
+sub-tasks. The encoder and LoRA passes, run inside their training jobs, add minutes rather than hours at
+those jobs' recorded throughputs, and the CPU stage emits labels from stored member
+probabilities in $0.26$ seconds on a laptop. The full ensemble is conservatively under one
+GPU-hour; the zero-shot member and decision layer alone ($0.5891$ out of fold against
+$0.6997$, Table~\ref{tab:levels}) cut that to about a quarter.
 
-\section{What the data and the compute provided}
+\section{What data and compute provided}
 \label{sec:bought}
 
 \begin{table}[t]
@@ -279,53 +289,48 @@ L4 $-$ L1, ST3 only & \multicolumn{4}{r}{$+0.0237$\ \ $[-0.0094,+0.0579]$} \\
 \bottomrule
 \end{tabular}
 \caption{Data access levels, measured on the zero-shot member with only the prompt's field set
-changed and the decision parameters refitted per level. Paired channel bootstrap, 4{,}000
-replicates, out-of-fold split.}
+changed and the decision parameters refitted per level; paired channel bootstrap, 4{,}000
+replicates, out-of-fold split, intervals uncorrected for multiple comparisons (\S\ref{sec:protocol}).}
 \label{tab:levels}
 \end{table}
 
 \subsection{Data access}
 \label{sec:levels}
 
-The task is built around what a monitoring system achieves at a given level of data access and
-cost. Because a level is a prompt field set for the zero-shot member, the question can be
-answered by inference alone: that member was re-run at each level, changing nothing but which
-fields are serialised, with decision parameters refitted per level so that each level is scored
-with thresholds calibrated to its own probabilities (Table~\ref{tab:levels}).
+Because a level is a prompt field set for the zero-shot member, the task's question can be
+answered by inference alone: that member was re-run at each level, changing only which fields
+are serialised, with decision parameters refitted per level (Table~\ref{tab:levels}).
 
 Video context is worth $+0.025$; the channel name adds nothing measurable ($-0.003$, interval
-spanning zero). The product page adds the most, $+0.063$, and is also the only level collected
-by an outbound crawl over pages that may be dead or block automation; the first three levels
-are metadata calls.
+spanning zero). The product page adds the most, $+0.063$, and is the only level collected by an
+outbound crawl over pages that may be dead or block automation, the first three being metadata
+calls.
 
 The composition is more informative than the total: the product page's gain falls almost
-entirely on ST1 ($+0.089$) and ST2 ($+0.096$), the two sub-tasks concerned with what is being
-sold, while ST3 is flat at every step, $+0.024$ from L1 to L4, with every adjacent interval
-spanning zero. On this
-evidence the most expensive level supported product identification and produced no measurable
-gain in compliance judgement. That is a measurement of the zero-shot member, not of the whole
-system, whose other members also read the page (see Limitations); within its scope, a
-deployment concerned only with the regulatory flags may not require the crawl.
+entirely on ST1 ($+0.089$) and ST2 ($+0.096$), the sub-tasks concerned with what is sold,
+while ST3 is flat at every step, $+0.024$ from L1 to L4 with every adjacent interval spanning
+zero. On this evidence the most expensive level supported product identification and produced
+no measurable gain in compliance judgement. That is a measurement of the zero-shot member, not
+of the whole system, whose other members also read the page (see Limitations); within that
+scope, a deployment concerned only with the regulatory flags may not need the crawl.
 
-A plausible explanation lies in the labels rather than the model: the organisers report
-cross-model agreement between their two annotator models of $94.4\%$ exact-label on ST1 but
-only $44.4\%$ exact-set on ST3, and where two frontier models agree on fewer than half of
-instances, additional input fields would not be expected to help. The ST3 ceiling is more
-plausibly a label ceiling than a data-access one.
+The likelier explanation is in the labels: the organisers report agreement between their two
+annotator models of $94.4\%$ exact-label on ST1 but only $44.4\%$ exact-set on ST3, and where
+two frontier models agree on fewer than half of instances, more input would not be expected
+to help; the ST3 ceiling is more plausibly a label ceiling than a data-access one.
 
 \subsection{Ensemble anatomy}
 \label{sec:anatomy}
 
-Table~\ref{tab:members} gives the leave-one-out result. The zero-shot 32B model is the most
-valuable member by a factor of two over the next, with intervals excluding zero on both ST2 and
-ST3, while consuming $1.5$ GPU-hours. Removing DeBERTa-v3-large, six GPU-hours of fine-tuning,
-changes the mean by $-0.0000$ with an interval spanning zero. This runs against the LegalLens
-2024 finding that top teams \emph{``consistently relied on fine-tuning pre-trained language
-models''} \cite{hagag2024legallens,tran2024deberta} and against the broader result that
-fine-tuned small models beat zero-shot generative ones on classification
-\cite{bucher2024finetuned}; neither is contradicted directly, the measurement being a marginal
-contribution inside one ensemble with two of six intervals spanning zero, but here the prompted
-member contributed more than the fine-tuned encoders at a quarter of the compute.
+Table~\ref{tab:members} gives the leave-one-out result: the zero-shot 32B model is the most
+valuable member by a factor of two over the next, with intervals excluding zero on ST2 and ST3,
+at $1.5$ GPU-hours; removing DeBERTa-v3-large, six GPU-hours of fine-tuning, changes the mean by
+$-0.0000$. This runs against the LegalLens 2024 finding that top teams \emph{``consistently
+relied on fine-tuning pre-trained language models''} \cite{hagag2024legallens,tran2024deberta}
+and the broader result that fine-tuned small models beat zero-shot generative ones
+\cite{bucher2024finetuned}; neither is contradicted directly by a marginal contribution inside
+one ensemble, but here the prompted member contributed more than the fine-tuned encoders at a
+quarter of the compute.
 
 \begin{table}[t]
 \centering\small
@@ -343,47 +348,49 @@ Member & Model & GPU-h & Removal cost \\
 \bottomrule
 \end{tabular}
 \caption{Ensemble roster. Removal cost is the paired change in out-of-fold mean macro-F1 when
-the member is dropped and the whole decision layer refitted without it; a more negative value
-indicates a larger contribution. An asterisk marks a 95\% interval excluding zero (4{,}000
-channel resamples). GPU-hours are per member; the encoder lane spent about 12 hours over six
-runs and the LoRA lane about 22 over three sub-task jobs, of which only the ST2 job is used.}
+the member is dropped and the decision layer refitted without it (more negative, larger
+contribution); an asterisk marks a 95\% interval excluding zero (4{,}000 channel resamples),
+uncorrected for the sixteen gated comparisons (\S\ref{sec:protocol}). GPU-hours are per member
+(the encoder lane spent about 12 hours over six runs, the LoRA lane about 22 over three
+sub-task jobs, of which only ST2 is used).}
 \label{tab:members}
 \end{table}
 
 \subsection{Interventions that did not survive}
 \label{sec:failed}
 
-Most gated interventions were indistinguishable from noise and were dropped: a
-$16$-configuration blend-weight grid ($+0.0019$ out of fold, dev moving the opposite way), a
+Most gated interventions were indistinguishable from noise: a $16$-configuration blend-weight
+grid ($+0.0019$ out of fold, dev moving the opposite way), a
 fourth encoder seed ($-0.005$ ST1), reasoning mode on the zero-shot member ($+0.0019$, CI
-$[-0.0011,+0.0071]$). A gradient-boosted ST3 stacker is better standalone ($0.6096$ against
-$0.5780$ macro over the eight flags) but failed all three integrations, its errors correlating
-more closely with the other members'. Thresholds maximising expected per-class F1 at evaluation
-size promised a large rare-class gain and delivered $-0.0000$ on fresh draws: per-class and
-macro expected F1 are different objectives under present-label semantics. Legal provisions in
-the prompt were not measured here; Gui et al. \shortcite{gui2025explanations} report at this
-venue that they improve explanation quality without consistently improving detection.
+$[-0.0011,+0.0071]$), and a fourth zero-shot prompt variant rewritten from a per-class error
+analysis of ST3, better on five of eight flags at member level and without system-level gain.
+A gradient-boosted ST3 stacker is better standalone ($0.6096$ against $0.5780$ macro over the
+eight flags) but failed all three integrations, its errors correlating more closely with the
+other members'. Thresholds maximising expected per-class F1 at evaluation size promised a large
+rare-class gain and delivered $-0.0000$ on fresh draws, per-class and macro expected F1 being
+different objectives under present-label semantics. Quoting the shipped legal provisions in the
+prompt (variant B) scored approximately the same as the definitions-only prompt at member
+level, consistent with Gui et al. \shortcite{gui2025explanations}, who report at this venue
+that provisions improve explanation quality but not, consistently, detection.
 
 \section{Findings about the evaluation}
 \label{sec:evaluation}
 
-The validation harness of \S\ref{sec:protocol} surfaced three properties of the evaluation
-itself. They are summarised here as feedback for future editions and detailed in
-Appendix~\ref{app:evaluation}; none is a claim about any other entry.
+Three properties of the evaluation that surfaced during validation are summarised here as
+feedback for future editions and detailed in Appendix~\ref{app:evaluation}; none is a claim
+about any other entry.
 
 \subsection{The divisor is the dominant variance component}
 \label{sec:divisor}
 
 ST1 \lab{other} has two gold instances in the $2{,}353$ out-of-fold rows and the system never
 predicts it; under present-label-set semantics its presence in the gold alone admits it to the
-average, at $\mathrm{F1}=0$. A gold \lab{other} row is drawn in $87.1\%$ of channel resamples,
-and conditioning on that event splits the bootstrap distribution into two modes: mean metric
-$0.6976$ (s.e. $0.0090$) with the class present and $0.7506$ (s.e. $0.0102$) without, on
-bit-identical predictions (Figure~\ref{fig:divisor}, Appendix~\ref{app:repro}). The $+0.0530$
-gap is about six times the $0.0087$ separating the first and second entries on the final board,
-and whether to emit such a class is undecidable from the training data, since which error is
-worse depends on the hidden gold. That decision was made incorrectly here, at the cost
-\S\ref{sec:invert} states.
+average at $\mathrm{F1}=0$. A gold \lab{other} row is drawn in $87.1\%$ of channel resamples,
+which splits the bootstrap distribution into two modes on bit-identical predictions, $0.6976$
+with the class present and $0.7506$ without (Figure~\ref{fig:divisor}); the $+0.0530$ gap is
+about six times the $0.0087$ separating the first two entries on the final board. Whether to
+emit such a class is undecidable from the training data, since which error is worse depends on
+the hidden gold; here it was decided incorrectly (\S\ref{sec:invert}).
 
 \subsection{The divisor is recoverable}
 \label{sec:invert}
@@ -391,16 +398,24 @@ worse depends on the hidden gold. That decision was made incorrectly here, at th
 A constant predictor of class $c$ over $N$ instances with $g$ gold instances of $c$ scores
 $S=2g/\bigl(K(N+g)\bigr)$, $K$ being the number of classes present, so $g = SKN/(2-SK)$; with
 $S$ published to four decimals and $g$ an integer, each candidate $K$ either admits a solution
-or does not. The organisers
-published a constant \lab{physical\_goods} baseline for both phases. On the development split
-($S=0.1510$, $N=504$) only $K=4$ admits a solution, $g=218$, which is exactly the development
-gold. On the evaluation split ($S=0.1274$, $N=503$) two candidates survive, $K=4$ with $g=172$
-and $K=5$ with $g=235$; the pooled labelled rate of $0.4701$ selects the second, and the
-overview paper's Table 3 confirms $235$ \lab{physical\_goods} and one \lab{other}. The class
-this system suppresses was therefore present, and the suppression cost a fifth of the ST1
-column ($0.0676$ of the mean, \S\ref{sec:hand}) across three of five submission slots.
-Appendix~\ref{app:evaluation} relates this to prior label-recovery results and lists remedies;
-fixing the label set for the average removes both this and the variance above in one step.
+or does not. For the organisers' constant \lab{physical\_goods} baseline on the development
+split ($S=0.1510$, $N=504$) only $K=4$ admits one, $g=218$, exactly the development gold; on the
+evaluation split ($S=0.1274$, $N=503$) $K=4$ with $g=172$ and $K=5$ with $g=235$ survive, the
+pooled labelled rate of $0.4701$ selects the second, and the overview paper's Table 3 confirms
+$235$ \lab{physical\_goods} and one \lab{other}. The class this system suppresses was therefore
+present, and the suppression cost a fifth of the ST1 column ($0.0676$ of the mean,
+\S\ref{sec:hand}) across three of five submission slots. Fixing the label set for the average
+removes both this and the variance above (Appendix~\ref{app:evaluation}).
+
+\paragraph{Disclosure and fairness.}
+The inversion was derived while the phase was open, between the third submission on 12 August
+2026 and 14 August, and it is what led the fourth and fifth entries to emit \lab{other}, by
+hand (\S\ref{sec:hand}). It was reported to the organisers in the disclosure sent on 19 August,
+the day after the phase closed, and confirmed by them against their own labels by 22 August.
+The published row therefore gave any participant who solved for it information about the
+hidden gold that others did not have, worth a fifth of the ST1 column, and this entry acted on
+it; whether any other entry did is not known. That bears on the comparability of the ST1
+column across entries; the remedy lies in the metric, since the row was published by design.
 
 \subsection{Channel-disjoint, not advertiser-disjoint}
 \label{sec:advertiser}
@@ -408,64 +423,51 @@ fixing the label set for the average removes both this and the variance above in
 Brands and destinations are not held out, and the organisers have independently observed the
 resulting overlap (personal communication). Taking an advertiser to be the registrable domain
 of the resolved product-page URL, $54.5\%$ of evaluation-split advertisers already appear in the
-labelled data and $70.4\%$ of evaluation rows carry one. On the development split, a lookup
-table that copies an advertiser's majority training label, with no model at all, scores
-$0.4649$ mean macro-F1 against $0.0928$ for the majority baseline and $0.7352$ for the full
-system, and assigns ST1 exactly right on $93.0\%$ of the $358$ rows whose advertiser is
-labelled. This is not evidence that systems perform lookup, and this one does not (development
-score $0.7126$ on unseen advertisers against $0.6805$ on seen). The shortcut
-is far weaker for compliance ($+0.283$ on ST3 against $+0.534$ on ST1 and $+0.657$ on ST2 over
-the majority baseline), the same asymmetry the data-level ablation shows: what is sold is
-substantially memorisable, whether it complies is not.
+labelled data and $70.4\%$ of evaluation rows carry one; a lookup that copies an advertiser's
+majority training label, with no model at all, scores $0.4649$ mean macro-F1 on dev against
+$0.0928$ for the majority baseline, far more of it on what is sold than on whether it complies
+(Appendix~\ref{app:evaluation}), as in the data-level ablation. This is not evidence that
+systems perform lookup, and this one does not (dev $0.7126$ on unseen advertisers against
+$0.6805$ on seen).
 
 \section{Labels the system did not produce}
 \label{sec:hand}
 
-Four labels in submitted files were set by hand: three in the final entry, and one in an
-earlier entry, withdrawn before the final one.
-
-The final entry's three are one ST1 \lab{none}$\rightarrow$\lab{other} on an Omaze
+Four labels in submitted files were set by hand, three in the final entry and one in an earlier
+entry withdrawn before it. The final entry's three are one ST1 \lab{none}$\rightarrow$\lab{other} on an Omaze
 sweepstakes, with advertiser precedent in two labelled segments (gold \lab{other} and
-\lab{none}), and two ST2 \lab{+gambling} on betting sponsorships, one with precedent in exactly
-one labelled segment (PrizePicks) and one with none (Picklebet). The fourth, in the earlier
-entry, converted a genuine \lab{physical\_goods} instance to \lab{other} against a seven-to-one
+\lab{none}), and two ST2 \lab{+gambling} on betting sponsorships, one with precedent in a single
+labelled segment (PrizePicks) and one with none (Picklebet). The fourth, in the earlier entry,
+converted a genuine \lab{physical\_goods} instance to \lab{other} against a seven-to-one
 precedent and was withdrawn as a false positive. The first account sent to the organisers
 described all four as resting on advertiser precedent; diffing the submitted archives showed
-that this holds for two, is absent for the Picklebet label, whose advertiser that account also
-misnamed, and is contradicted by the fourth. Both corrections were sent to the organisers.
+that this holds for two, fails for Picklebet (whose advertiser that account also misnamed) and
+is contradicted by the fourth, and both corrections were sent.
 
-The three labels are worth $+0.0723$ of mean macro-F1, of which the single ST1 label accounts
-for $+0.0676$, roughly eight times the $0.0087$ separating the top two entries on the final
-board, for the reason \S\ref{sec:divisor} describes: ST1 \lab{other} has exactly one gold
-instance in the evaluation split, so one label constituted the entire gold column for its class
-and moved one fifth of the ST1 column from zero to full credit.
+The three labels are worth $+0.0723$ of mean macro-F1, $+0.0676$ of it from the single ST1
+label, roughly eight times the $0.0087$ separating the top two entries on the final board, for
+the reason \S\ref{sec:divisor} describes: ST1 \lab{other} has exactly one gold instance in the
+evaluation split, so one label constituted the entire gold column for its class and moved a
+fifth of the ST1 column from zero to full credit.
 
-\paragraph{What the record can establish.}
-The evaluation phase scores an uploaded predictions file and collects a fact sheet; the
-producing code is not collected, so no retained artefact distinguishes a system's prediction
-from one entered by hand, and the sentence volunteered on this entry's fact sheet was the only
-trace of these edits. No evidence is held about any other entry, in either direction. No check
-that would have identified them (collect the code, rerun it, diff against the submitted file)
-was run, so what is known about provenance is what teams chose to report.
-
-After the phase closed, the precedent behind the Omaze label was implemented as code, its brand
-vocabulary built only from the labelled splits and its parameters fixed before first execution;
-applied uniformly to all $503$ evaluation instances it selects exactly that one, and the
-resulting file would return $0.7213$. That is evidence the label was reachable within the
-rules, not an achieved score: the file was never submitted, and the rule was written knowing
-which instance to select.
+\paragraph{What the record can establish, and what changed.}
+The phase collected a predictions file and a fact sheet, not code, so no retained artefact
+distinguishes a system's prediction from one entered by hand; the sentence volunteered on this
+entry's fact sheet was the only trace of these edits, and no evidence is held about any other
+entry. The edits were possible because the submitted file was assembled by hand from an
+emitted one; the repository's submission generator now refuses to package a predictions file
+unless it is byte-identical to a fresh emission from the member probabilities and decision
+parameters pinned in the configuration manifest, and records the archive's hash beside that
+manifest, so a hand-set label cannot enter a submission without failing the check.
 
 \section{Conclusion}
 
 The thylinao entry is a six-member ensemble anchored by a zero-shot 32B member and disciplined
-by a paired channel bootstrap that admitted or rejected every candidate change; its system-only
-evaluation score is $0.6537$. Three observations may transfer: a prompted member contributed
-more than the fine-tuned encoders at a quarter of the compute, and one six-GPU-hour encoder was
-removable at no measurable cost; measured on the zero-shot member, the channel name added
-nothing and the product-page crawl supported product identification rather than compliance
-judgement; and the compliance sub-task appears label-limited. The final submitted
-entry contained three hand-set labels, documented in \S\ref{sec:hand}; the system-only score is
-reported throughout and no rank is claimed.
+by a paired channel bootstrap; its system-only evaluation score is $0.6537$. A prompted member
+contributed more than the fine-tuned encoders at a quarter of the compute; on that member, the
+channel name added nothing and the product-page crawl supported product identification, not
+compliance judgement; and the compliance sub-task appears label-limited. Three hand-set labels
+in the final entry are documented in \S\ref{sec:hand}; no rank is claimed.
 
 \section*{Limitations}
 
@@ -486,10 +488,8 @@ The leave-one-out figures in Table~\ref{tab:members} refit the decision layer pe
 therefore marginal contributions within one specific ensemble rather than measures of intrinsic
 model quality. Two of the six intervals span zero.
 
-Roughly sixteen changes were gated at a 95\% level without a multiplicity correction, and beneath
-those sit more than two thousand uncorrected threshold-grid evaluations. The accepted changes
-should be read accordingly: a family-wise correction across the gated tests leaves fewer of them
-significant than their individual intervals suggest.
+Roughly sixteen changes were gated at a 95\% level without a multiplicity correction
+(\S\ref{sec:protocol}), and the accepted changes should be read accordingly.
 
 The advertiser analysis uses the resolved product-page domain as a proxy for advertiser identity.
 It will merge distinct advertisers that share a platform domain, and will split advertisers
@@ -594,8 +594,10 @@ All measurements in this paper are produced by scripts in the repository at
 (\S\ref{sec:divisor}), \lab{clinic/level\_ablation.py} (Table~\ref{tab:levels}),
 \lab{clinic/member\_ablation.py} (Table~\ref{tab:members}),
 \lab{clinic/advertiser\_overlap.py} (\S\ref{sec:advertiser}) and
-\lab{clinic/hand\_label\_audit.py} (\S\ref{sec:hand}), with the pinned scorer in
-\lab{eval/local\_scorer.py} and the pipeline figure in \lab{clinic/make\_pipeline\_figure.py}.
+\lab{clinic/hand\_label\_audit.py} (\S\ref{sec:hand}) and \lab{clinic/per\_class\_report.py}
+(Table~\ref{tab:perclass}), with the pinned scorer in \lab{eval/local\_scorer.py}, the pipeline
+figure in \lab{clinic/make\_pipeline\_figure.py}, and the manifest-checked submission generator
+of \S\ref{sec:hand} in \lab{generate\_submission.py} (\lab{--from-manifest}).
 
 \section{Evaluation findings in detail}
 \label{app:evaluation}
@@ -606,8 +608,8 @@ present, ST1 averages over five classes; with it absent, over four, so the ST1 c
 $+0.1604$ against a predicted $+0.1590$, a four-class average being exactly $5/4$ of a
 five-class one, and the reported mean by $+0.0530$. Three consequences follow. A marginal
 standard error is not a sufficient summary of a score on this metric: the marginal figure of
-$0.0200$ is roughly twice the within-regime figure, and none of the excess reflects a property
-of the system. Two rows of a class no system emits outweigh the gap between the two leading
+$0.0200$ is roughly twice the within-regime figures ($0.0090$ with the class present, $0.0102$
+without), and none of the excess reflects a property of the system. Two rows of a class no system emits outweigh the gap between the two leading
 systems. And whether to emit such a class cannot be decided from the training data: firing and
 missing costs a false positive, never firing costs the whole class slot, and which is worse
 depends on the hidden gold.
@@ -643,9 +645,84 @@ that is not being scored, at fewer decimals, or as a bootstrapped score
 No channel is shared between the evaluation split and the labelled data, so the overlap is
 entirely at the advertiser level, and because $66.7\%$ of training rows have their advertiser
 in another fold, out-of-fold estimates are partly measured on advertisers already fitted. The
-lookup's gains over the majority baseline are $+0.534$ on ST1, $+0.657$ on ST2 and $+0.283$ on
-ST3; the advertiser proxy will merge distinct advertisers that share a platform domain and split
-advertisers across country domains. A future edition might report an advertiser-disjoint split
+lookup assigns ST1 exactly right on $93.0\%$ of the $358$ development rows whose advertiser is
+labelled, against $0.7352$ mean macro-F1 for the full system on that split, and its gains over
+the majority baseline are $+0.534$ on ST1, $+0.657$ on ST2 and $+0.283$ on ST3; the advertiser
+proxy will merge distinct advertisers that share a platform domain and split advertisers across
+country domains. A future edition might report an advertiser-disjoint split
 alongside the channel-disjoint one.
+
+\section{Per-class results}
+\label{app:perclass}
+
+\begin{table}[t]
+\centering\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+& \multicolumn{4}{c}{out-of-fold (2353)} & \multicolumn{2}{c}{dev (504)} \\
+\cmidrule(lr){2-5}\cmidrule(l){6-7}
+Class & $n$ & P & R & F1 & $n$ & F1 \\
+\midrule
+\multicolumn{7}{@{}l}{\emph{ST1, macro-F1 0.6369 / 0.8519}} \\
+physical goods & 1125 & 0.96 & 0.95 & 0.95 & 218 & 0.93 \\
+digital content/services & 1069 & 0.94 & 0.94 & 0.94 & 248 & 0.94 \\
+physical services & 122 & 0.76 & 0.72 & 0.74 & 24 & 0.84 \\
+none & 35 & 0.46 & 0.69 & 0.55 & 14 & 0.69 \\
+other & 2 & -- & 0.00 & 0.00 & 0 & -- \\
+\midrule
+\multicolumn{7}{@{}l}{\emph{ST2, macro-F1 0.8423 / 0.7572}} \\
+toys & 77 & 0.79 & 0.84 & 0.82 & 8 & 0.71 \\
+food & 293 & 0.95 & 0.95 & 0.95 & 49 & 0.95 \\
+apps & 654 & 0.83 & 0.88 & 0.85 & 171 & 0.86 \\
+hardware/electronics & 516 & 0.84 & 0.89 & 0.87 & 120 & 0.91 \\
+fashion & 267 & 0.87 & 0.90 & 0.88 & 50 & 0.83 \\
+health & 264 & 0.89 & 0.84 & 0.87 & 55 & 0.88 \\
+education & 140 & 0.85 & 0.91 & 0.88 & 12 & 0.70 \\
+financial & 135 & 0.90 & 0.84 & 0.87 & 20 & 0.74 \\
+gambling & 12 & 1.00 & 0.92 & 0.96 & 5 & 0.50 \\
+gambling-adjacent & 92 & 0.72 & 0.79 & 0.76 & 17 & 0.78 \\
+creator community & 269 & 0.78 & 0.72 & 0.75 & 47 & 0.67 \\
+other & 412 & 0.63 & 0.71 & 0.67 & 87 & 0.57 \\
+\midrule
+\multicolumn{7}{@{}l}{\emph{ST3, macro-F1 0.6199 / 0.5966}} \\
+undisclosed advertising & 352 & 0.87 & 0.86 & 0.87 & 74 & 0.84 \\
+inadequate disclosure & 611 & 0.48 & 0.61 & 0.54 & 118 & 0.45 \\
+direct exhortation & 304 & 0.45 & 0.56 & 0.50 & 77 & 0.54 \\
+misleading claim & 1277 & 0.74 & 0.81 & 0.78 & 260 & 0.78 \\
+age-restricted product & 59 & 0.66 & 0.69 & 0.68 & 16 & 0.69 \\
+HFSS food marketing & 40 & 0.42 & 0.70 & 0.52 & 5 & 0.26 \\
+no flag & 529 & 0.57 & 0.60 & 0.58 & 127 & 0.54 \\
+insufficient context & 15 & 0.54 & 0.47 & 0.50 & 7 & 0.67 \\
+\bottomrule
+\end{tabular}
+\caption{Per-class results of the system on the two labelled splits under the present-label
+convention: gold count $n$, precision, recall and F1 out of fold, and gold count and F1 on
+dev. A class absent from both gold and predictions is dropped from the average (dashes).}
+\label{tab:perclass}
+\end{table}
+
+\begin{table}[t]
+\centering\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+gold $\backslash$ predicted & PG & DC & PS & N & O \\
+\midrule
+PG (physical goods) & 1064 & 38 & 15 & 8 & 0 \\
+DC (digital content/services) & 32 & 1009 & 11 & 17 & 0 \\
+PS (physical services) & 8 & 23 & 88 & 3 & 0 \\
+N (none) & 5 & 4 & 2 & 24 & 0 \\
+O (other) & 1 & 1 & 0 & 0 & 0 \\
+\bottomrule
+\end{tabular}
+\caption{ST1 confusion matrix on the out-of-fold split, gold in rows and predictions in
+columns.}
+\label{tab:confusion}
+\end{table}
+
+Tables~\ref{tab:perclass} and \ref{tab:confusion} are produced by
+\lab{clinic/per\_class\_report.py} from the canonical emission scored in
+Table~\ref{tab:results}.
 
 \end{document}
